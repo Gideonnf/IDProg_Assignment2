@@ -39,15 +39,20 @@ public class RotatePivot : MonoBehaviour {
         {
             GameObject lastHitGo = Swipe.GetInstance().GetCurrentSelectedGO();
 
-            if (lastHitGo != null || lastHitGo.tag != "EditableUI")
+            if (lastHitGo == null)
                 RotateRight();
+            else if (lastHitGo.tag != "EditableUI")
+                RotateRight();
+
         }
         // Detect Left Swipe
         else if(Swipe.GetInstance().GetSwipeLeft())
         {
             GameObject lastHitGo = Swipe.GetInstance().GetCurrentSelectedGO();
 
-            if (lastHitGo != null || lastHitGo.tag != "EditableUI")
+            if (lastHitGo == null)
+                RotateLeft();
+            else if (lastHitGo.tag != "EditableUI")
                 RotateLeft();
         }
 
@@ -77,7 +82,7 @@ public class RotatePivot : MonoBehaviour {
         pannelIndex = GetPreviousPannelIndex(pannelIndex);
         // Rotate
         transform.DORotate(RotateAmount, 0.6f, RotateMode.LocalAxisAdd);
-        Debug.Log("LEFT");
+        //Debug.Log("LEFT");
         // Do any necessary actions AFTER rotating
         AfterRotateAction();
     }

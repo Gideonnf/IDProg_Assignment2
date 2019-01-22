@@ -3,11 +3,20 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+// DOTween
+using DG.Tweening;
 
 public class Swipe : MonoBehaviour
 {
+    // Static Instance
+    private static Swipe m_Instance;
+    public static Swipe GetInstance()
+    {
+        return m_Instance;
+    }
+
     // Storing the game object we collided with
-    private GameObject currentSelectedGO;   
+    private GameObject m_currentSelectedGO;
 
     // Graphics Raycasting
     GraphicRaycaster m_Raycaster;
@@ -20,6 +29,16 @@ public class Swipe : MonoBehaviour
     private bool isDragging = false;
     private Vector2 startTouch, swipeDelta;
 
+
+    // Awake is called before all Starts..
+    private void Awake()
+    {
+        m_Instance = this;
+        // Init DOTween for Other Classes
+        DOTween.Init();
+    }
+
+    // Start is called after all Awakes
     private void Start()
     {
         //Fetch the Raycaster from the GameObject (the Canvas)
@@ -31,6 +50,7 @@ public class Swipe : MonoBehaviour
     private void Update()
     {
         tap = swipeLeft = swipeRight = swipeUp = swipeDown = false;
+        //tap = false;
 
         #region Standalone Inputs
         if (Input.GetMouseButtonDown(0))
@@ -45,12 +65,14 @@ public class Swipe : MonoBehaviour
         {
             Reset();
             isDragging = false;
+            m_currentSelectedGO = null;
+            //Debug.Log("SELECTED_RESETEED!!");
         }
         #endregion
 
         #region Mobile Inputs
         // Any touches on the screen
-        if(Input.touches.Length > 0)
+        if (Input.touches.Length > 0)
         {
             // take the first touch, 
             // check if we touched on this frame
@@ -66,6 +88,8 @@ public class Swipe : MonoBehaviour
             {
                 Reset();
                 isDragging = false;
+                m_currentSelectedGO = null;
+                //Debug.Log("SELECTED_RESETEED!!");
             }
         }
         #endregion
@@ -133,7 +157,7 @@ public class Swipe : MonoBehaviour
     private GameObject CheckCollidedWithGO(Vector3 touchedPosition)
     {
         // reset selectedGO
-        currentSelectedGO = null;
+        m_currentSelectedGO = null;
         //Set up the new Pointer Event
         m_PointerEventData = new PointerEventData(m_EventSystem);
         //Set the Pointer Event Position to that of the mouse position
@@ -148,22 +172,25 @@ public class Swipe : MonoBehaviour
         //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
         foreach (RaycastResult result in results)
         {
-            Debug.Log("Hit " + result.gameObject.name);
-            currentSelectedGO = result.gameObject;
+            //Debug.Log("Hit " + result.gameObject.name);
+
+            // Attach the collided GO
+            m_currentSelectedGO = result.gameObject;
             // To make sure only detect the first UI Hit
             break;
         }
 
         // return result
-        return currentSelectedGO;
+        return m_currentSelectedGO;
     }
 
     
-    public Vector2 GetSwipeDelta { get { return swipeDelta; } }
-    public bool GetTap { get { return tap; } }
-    public bool GetSwipeLeft { get { return swipeLeft; } }
-    public bool GetSwipeRight { get { return swipeRight; } }
-    public bool GetSwipeUp { get { return swipeUp; } }
-    public bool GetSwipeDown { get { return swipeDown; } }
+    public Vector2 GetSwipeDelta() { return swipeDelta; }
+    public GameObject GetCurrentSelectedGO() { return m_currentSelectedGO; }
+    public bool GetTap() { return tap; }
+    public bool GetSwipeLeft() { return swipeLeft; }
+    public bool GetSwipeRight() { return swipeRight; }
+    public bool GetSwipeUp() { return swipeUp; }
+    public bool GetSwipeDown() { return swipeDown; }
 
 }

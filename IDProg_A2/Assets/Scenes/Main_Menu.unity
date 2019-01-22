@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 3955023}
   - component: {fileID: 3955022}
   m_Layer: 0
-  m_Name: Button (1)
+  m_Name: NotifiButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,8 +138,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 3955020}
   m_LocalRotation: {x: -6.184563e-11, y: -1.065814e-13, z: -2.3283062e-10, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0005827631}
-  m_LocalScale: {x: 1.8457466, y: 12.531862, z: 1.5703079}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.3814263, y: 12.531862, z: 1.5703079}
   m_Children:
   - {fileID: 1094381605}
   m_Father: {fileID: 326681789}
@@ -147,7 +147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -522.00024, y: 0.000030517578}
+  m_AnchoredPosition: {x: -154, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3955022
@@ -190,7 +190,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2026098924}
-        m_MethodName: MoveToVolume
+        m_MethodName: MoveToNotifications
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1356,7 +1356,7 @@ GameObject:
   - component: {fileID: 378318753}
   - component: {fileID: 378318752}
   m_Layer: 0
-  m_Name: VolumeText
+  m_Name: languageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1377,7 +1377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.8, y: 0.4}
+  m_AnchoredPosition: {x: -24.6, y: 0.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &378318752
@@ -1399,7 +1399,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Volume
+  m_text: Language
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1464,10 +1464,10 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 2.7712379, y: 0.18389378, z: -1.551842, w: 0}
+  m_margin: {x: 37.32208, y: 0.18389378, z: -1.551842, w: 0}
   m_textInfo:
     textComponent: {fileID: 378318752}
-    characterCount: 6
+    characterCount: 8
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -1512,7 +1512,7 @@ GameObject:
   - component: {fileID: 388217419}
   - component: {fileID: 388217418}
   m_Layer: 0
-  m_Name: Button
+  m_Name: VolButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4212,16 +4212,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1094381604}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -6.591594e-24, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3403, y: 1, z: 1}
+  m_LocalScale: {x: 1.1032193, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3955021}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.8, y: 0.4}
+  m_AnchoredPosition: {x: 5.5, y: 0.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1094381606
@@ -4308,7 +4308,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 2.7712379, y: 0.18389378, z: -1.551842, w: 0}
+  m_margin: {x: 2.7712379, y: 0.18389378, z: 9.763471, w: 0}
   m_textInfo:
     textComponent: {fileID: 1094381606}
     characterCount: 13
@@ -6730,7 +6730,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1675432910}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 3078}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6744,7 +6744,7 @@ RectTransform:
   - {fileID: 1469063242}
   m_Father: {fileID: 874462152}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -7382,7 +7382,7 @@ GameObject:
   - component: {fileID: 1909937396}
   - component: {fileID: 1909937395}
   m_Layer: 0
-  m_Name: Button (2)
+  m_Name: LanButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7395,8 +7395,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1909937393}
   m_LocalRotation: {x: -6.184563e-11, y: -1.065814e-13, z: -2.3283062e-10, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0005827631}
-  m_LocalScale: {x: 1.8457466, y: 12.531862, z: 1.5703079}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.083479, y: 12.531862, z: 1.5703079}
   m_Children:
   - {fileID: 378318751}
   m_Father: {fileID: 326681789}
@@ -7404,7 +7404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -522.00024, y: 0.000030517578}
+  m_AnchoredPosition: {x: 251, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1909937395
@@ -7447,7 +7447,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2026098924}
-        m_MethodName: MoveToVolume
+        m_MethodName: MoveToLanguage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

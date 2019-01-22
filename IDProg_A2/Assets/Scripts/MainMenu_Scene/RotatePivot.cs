@@ -33,7 +33,7 @@ public class RotatePivot : MonoBehaviour {
         m_Instance = this;
         optionSide = false;
         startingPos = new Vector2(2059.0f, 385.0f);
-        oppositePos = new Vector2(-2036.0f, 0.0f);
+        oppositePos = new Vector2(-2036.0f, 385.0f);
         rotating = false;
         rotatingTimer = 0.0f;
         rotateTime = 0.6f;

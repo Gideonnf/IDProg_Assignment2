@@ -18,15 +18,25 @@ public class RotatePivot : MonoBehaviour {
     private int pannelIndex;
     [SerializeField]
     private GameObject[] pannels;
+    private bool rotating;
+    private float rotateTime;
+    private float rotatingTimer;
+    // Option Page
     [SerializeField]
     private GameObject specialCase;
     private bool optionSide;
+    private Vector2 startingPos, oppositePos;
 
     // Attach the Instance
     private void Awake()
     {
         m_Instance = this;
         optionSide = false;
+        startingPos = new Vector2(2059.0f, 385.0f);
+        oppositePos = new Vector2(-2036.0f, 0.0f);
+        rotating = false;
+        rotatingTimer = 0.0f;
+        rotateTime = 0.6f;
     }
 
     // Use this for initialization
@@ -37,7 +47,14 @@ public class RotatePivot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+        DoneRotate();
+
+        // if currently rotating, don't 
+        // get new input
+        if (rotating)
+            return;
+
         // Detect Right Swipe
         if(Swipe.GetInstance().GetSwipeRight())
         {
@@ -73,7 +90,7 @@ public class RotatePivot : MonoBehaviour {
         // Go to next Pannel Index
         pannelIndex = GetNextPannelIndex(pannelIndex);
         // Rotate
-        transform.DORotate(-RotateAmount, 0.6f, RotateMode.LocalAxisAdd);
+        transform.DORotate(-RotateAmount, rotateTime, RotateMode.LocalAxisAdd);
         //Debug.Log("RIGHT");
         // Do any necessary actions AFTER rotating
         AfterRotateAction();
@@ -85,10 +102,27 @@ public class RotatePivot : MonoBehaviour {
         // Go to previous Pannel Index
         pannelIndex = GetPreviousPannelIndex(pannelIndex);
         // Rotate
-        transform.DORotate(RotateAmount, 0.6f, RotateMode.LocalAxisAdd);
+        transform.DORotate(RotateAmount, rotateTime, RotateMode.LocalAxisAdd);
         //Debug.Log("LEFT");
         // Do any necessary actions AFTER rotating
         AfterRotateAction();
+    }
+    private void DoneRotate()
+    {
+        // if still rotating,
+        // reduce timer
+        if(rotating)
+        {
+            rotatingTimer -= Time.deltaTime;
+        }
+
+        // Check if done rotating
+        if(rotatingTimer < 0.0f)
+        {
+            // Can get new swipe input again
+            rotating = false;
+            rotatingTimer = 0.0f;
+        }
     }
 
 
@@ -120,11 +154,12 @@ public class RotatePivot : MonoBehaviour {
         // as we only have one option page, in order to log down the users's settings
         if (optionSide)
         {
+            // Only check for other side's pannels
             if (pannelIndex == 0 ||
                 pannelIndex == 6)
             {
                 specialCase.SetActive(true);
-                specialCase.GetComponent<RectTransform>().anchoredPosition = new Vector2(2059.0f, 385.0f);
+                specialCase.GetComponent<RectTransform>().anchoredPosition = startingPos;
                 specialCase.GetComponent<RectTransform>().Rotate(new Vector3(0, 1, 0), 180);
 
                 optionSide = false;
@@ -132,18 +167,24 @@ public class RotatePivot : MonoBehaviour {
         }
         else
         {
+            // Only check for other side's pannels
             if (pannelIndex == 2 ||
            pannelIndex == 4)
             {
                 specialCase.SetActive(true);
-                specialCase.GetComponent<RectTransform>().anchoredPosition = new Vector2(-2036.0f, 0.0f);
+                specialCase.GetComponent<RectTransform>().anchoredPosition = oppositePos;
                 specialCase.GetComponent<RectTransform>().Rotate(new Vector3(0, 1, 0), -180);
                 optionSide = true;
             }
         }
+        // always set active as it will never be on the opposite 
+        // side anymore as we are always moving it's position
         specialCase.SetActive(true);
 
 
+        // Start rotating timer
+        rotatingTimer = rotateTime;
+        rotating = true;
     }
     // Travese to Next Pannel Index in Array
     private int GetNextPannelIndex(int currentIndex)

@@ -25,7 +25,7 @@ public class RotatePivot : MonoBehaviour {
         {
             GameObject lastHitGo = Swipe.GetInstance().GetCurrentSelectedGO();
 
-            if (lastHitGo.name != "Handle" && lastHitGo.name != "Background")
+            if (lastHitGo.tag != "EditableUI")
                 RotateRight();
         }
         // Detect Left Swipe
@@ -33,7 +33,7 @@ public class RotatePivot : MonoBehaviour {
         {
             GameObject lastHitGo = Swipe.GetInstance().GetCurrentSelectedGO();
 
-            if (lastHitGo.name != "Handle" && lastHitGo.name != "Background")
+            if (lastHitGo.tag != "EditableUI")
                 RotateLeft();
         }
 

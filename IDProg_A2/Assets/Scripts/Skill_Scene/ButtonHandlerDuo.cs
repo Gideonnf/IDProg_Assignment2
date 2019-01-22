@@ -24,6 +24,16 @@ public class ButtonHandlerDuo : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (ButtonAdjacent1.GetComponent<ButtonHandlerTrio>().GetActive() == false 
+            && ButtonAdjacent2.GetComponent<ButtonHandlerTrio>().GetActive() == false)
+        {
+            myButton.interactable = false;
+            SetActive(false);
+        }
+        else
+        {
+            myButton.interactable = true;
+        }
     }
 
     public void ToggleActive()
@@ -33,5 +43,22 @@ public class ButtonHandlerDuo : MonoBehaviour {
             myButton.GetComponent<Image>().sprite = ActiveSprite;
         else
             myButton.GetComponent<Image>().sprite = InactiveSprite;
+    }
+
+    void SetActive(bool _Active)
+    {
+        if (Active != _Active)
+        {
+            Active = _Active;
+            if (Active == true)
+                myButton.GetComponent<Image>().sprite = ActiveSprite;
+            else
+                myButton.GetComponent<Image>().sprite = InactiveSprite;
+        }
+    }
+
+    public bool GetActive()
+    {
+        return Active;
     }
 }

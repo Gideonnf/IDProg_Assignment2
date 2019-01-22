@@ -12,6 +12,11 @@ public class ButtonHandlerOrigin : MonoBehaviour
     public Button ButtonBottom;
     public Button ButtonLeft;
 
+    public Sprite ActiveSprite;
+    public Sprite InactiveSprite;
+
+    bool Active;
+
     // Use this for initialization
     void Start()
     {
@@ -28,5 +33,19 @@ public class ButtonHandlerOrigin : MonoBehaviour
         ButtonBottom.interactable = true;
         ButtonRight.interactable = true;
         ButtonLeft.interactable = true;       
+    }
+
+    public void ToggleActive()
+    {
+        Active = !Active;
+        if (Active == true)
+            myButton.GetComponent<Image>().sprite = ActiveSprite;
+        else
+            myButton.GetComponent<Image>().sprite = InactiveSprite;
+    }
+
+    public bool GetActive()
+    {
+        return Active;
     }
 }

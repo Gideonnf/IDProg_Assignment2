@@ -10,6 +10,7 @@ public class ButtonHandlerTrio : MonoBehaviour {
     public Button ButtonAdjacent1;
     public Button ButtonAdjacent2;
     public Button ButtonAdjacent3;
+    public Button ButtonPrev;
 
     public Sprite ActiveSprite;
     public Sprite InactiveSprite;
@@ -26,13 +27,30 @@ public class ButtonHandlerTrio : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-    }
-
-    public void SetAllAdjacentButtonActive()
-    {
-        ButtonAdjacent1.interactable = true;
-        ButtonAdjacent2.interactable = true;
-        ButtonAdjacent3.interactable = true;
+        if (ButtonPrev.GetComponent<ButtonHandlerOrigin>() != null)
+        {
+            if (ButtonPrev.GetComponent<ButtonHandlerOrigin>().GetActive() == true)
+            {
+                myButton.interactable = true;
+            }
+            else
+            {
+                myButton.interactable = false;
+                SetActive(false);
+            }
+        }
+        else if (ButtonPrev.GetComponent<ButtonHandlerTrio>() != null)
+        {
+            if (ButtonPrev.GetComponent<ButtonHandlerTrio>().GetActive() == true)
+            {
+                myButton.interactable = true;
+            }
+            else
+            {
+                myButton.interactable = false;
+                SetActive(false);
+            }
+        }    
     }
 
     public void ToggleActive()
@@ -42,5 +60,22 @@ public class ButtonHandlerTrio : MonoBehaviour {
             myButton.GetComponent<Image>().sprite = ActiveSprite;
         else
             myButton.GetComponent<Image>().sprite = InactiveSprite;
+    }
+
+    void SetActive(bool _Active)
+    {
+        if (Active != _Active)
+        {
+            Active = _Active;
+            if (Active == true)
+                myButton.GetComponent<Image>().sprite = ActiveSprite;
+            else
+                myButton.GetComponent<Image>().sprite = InactiveSprite;
+        }
+    }
+
+    public bool GetActive()
+    {
+        return Active;
     }
 }

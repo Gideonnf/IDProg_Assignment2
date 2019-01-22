@@ -23,7 +23,7 @@ public class OptionPannel : MonoBehaviour {
         if (RotatePivot.GetInstance().GetPannelIndex() == 3 ||
             RotatePivot.GetInstance().GetPannelIndex() == 7)
         {
-
+            // If a GO was Clicked
             if (Swipe.GetInstance().GetCurrentSelectedGO() != null)
             {
                 // Detect Language Clicking
@@ -59,7 +59,8 @@ public class OptionPannel : MonoBehaviour {
     }
 
 
-
+    // Function to Check if 
+    // A Language Flag was Selected
     private void DetectLanguageChange()
     {
         // check tapped which flag
@@ -71,4 +72,22 @@ public class OptionPannel : MonoBehaviour {
         }
 
     }
+
+
+    /*****************************************************************
+    *       MOVING FUNCTIONS
+    *****************************************************************/
+    public void MoveToVolume()
+    {
+        rectTransform.DOAnchorPosY(minHeight, 0.5f, true);
+    }
+    public void MoveToNotifications()
+    {
+        rectTransform.DOAnchorPosY(-1520, 0.5f, true);
+    }
+    public void MoveToLanguage()
+    {
+        rectTransform.DOAnchorPosY(maxHeight, 0.5f, true);
+    }
+
 }

@@ -140,7 +140,7 @@ RectTransform:
   m_GameObject: {fileID: 27996556}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 21
@@ -172,7 +172,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -190,7 +190,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 27996561}
-        m_MethodName: SetAllAdjacentButtonInteractable
+        m_MethodName: ToggleActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -251,6 +251,9 @@ MonoBehaviour:
   ButtonAdjacent1: {fileID: 733330931}
   ButtonAdjacent2: {fileID: 789830137}
   ButtonAdjacent3: {fileID: 1330191441}
+  ButtonPrev: {fileID: 1096970534}
+  ActiveSprite: {fileID: 21300000, guid: 40d5cd5e063749047ab48588b8fa4d0c, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: c9ef18a82c45b3c439450fb551284233, type: 3}
 --- !u!1 &86779078
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +281,7 @@ RectTransform:
   m_GameObject: {fileID: 86779078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 16
@@ -310,7 +313,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -326,7 +329,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 86779081}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 86779083}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &86779081
@@ -375,9 +389,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 86779080}
-  ButtonAdjacent1: {fileID: 1555400666}
-  ActiveSprite: {fileID: 0}
-  InactiveSprite: {fileID: 0}
+  ButtonPrev: {fileID: 1555400666}
+  ActiveSprite: {fileID: 21300000, guid: d4ef708d4624eca49b62d747c21dbd02, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 325239da2379f194bb8e85414f5f2a08, type: 3}
   Active: 0
 --- !u!1 &104725135
 GameObject:
@@ -406,7 +420,7 @@ RectTransform:
   m_GameObject: {fileID: 104725135}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 11
@@ -438,7 +452,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -455,12 +469,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 104725135}
-        m_MethodName: 
+      - m_Target: {fileID: 104725140}
+        m_MethodName: ToggleActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -514,9 +528,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 104725137}
-  ButtonAdjacent1: {fileID: 1245247380}
-  ActiveSprite: {fileID: 0}
-  InactiveSprite: {fileID: 0}
+  ButtonPrev: {fileID: 1245247380}
+  ActiveSprite: {fileID: 21300000, guid: 2eca353f7d5853640a32b98b0219c9d3, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 813eabc56f59bb747ba232abc98683a9, type: 3}
   Active: 0
 --- !u!1 &120079852
 GameObject:
@@ -613,7 +627,7 @@ RectTransform:
   m_GameObject: {fileID: 129916371}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 17
@@ -645,7 +659,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -663,7 +677,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 129916376}
-        m_MethodName: SetAllAdjacentButtonInteractable
+        m_MethodName: ToggleActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -724,6 +738,9 @@ MonoBehaviour:
   ButtonAdjacent1: {fileID: 1760738393}
   ButtonAdjacent2: {fileID: 651204750}
   ButtonAdjacent3: {fileID: 403480697}
+  ButtonPrev: {fileID: 1259574123}
+  ActiveSprite: {fileID: 21300000, guid: bbcf76c73e5f54749a7a07185b9c46b0, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 79654cc5e266e34409b21a931ab830c3, type: 3}
 --- !u!1 &155071445
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +768,7 @@ RectTransform:
   m_GameObject: {fileID: 155071445}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 8
@@ -783,7 +800,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -799,7 +816,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 155071448}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 155071450}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &155071448
@@ -850,6 +878,8 @@ MonoBehaviour:
   myButton: {fileID: 155071447}
   ButtonAdjacent1: {fileID: 1259574123}
   ButtonAdjacent2: {fileID: 1096970534}
+  ActiveSprite: {fileID: 21300000, guid: c5ec0d29f4df2f94bb3e8f9feb6b3b73, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: e4b780046136a1145a9371fdb5a15c47, type: 3}
 --- !u!1 &155488369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,7 +1206,7 @@ RectTransform:
   m_GameObject: {fileID: 279360355}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 15
@@ -1208,7 +1238,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1224,7 +1254,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 279360358}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 279360360}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &279360358
@@ -1273,9 +1314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 279360357}
-  ButtonAdjacent1: {fileID: 1555400666}
-  ActiveSprite: {fileID: 0}
-  InactiveSprite: {fileID: 0}
+  ButtonPrev: {fileID: 1555400666}
+  ActiveSprite: {fileID: 21300000, guid: b8619c63d08be8b4db235ed57e18ade5, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: c3acc42b7dc0e374fa02180ff5a0ac8a, type: 3}
   Active: 0
 --- !u!1 &319949176
 GameObject:
@@ -1440,7 +1481,7 @@ RectTransform:
   m_GameObject: {fileID: 403480695}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 20
@@ -1472,7 +1513,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1488,7 +1529,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 403480698}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 403480700}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &403480698
@@ -1537,9 +1589,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 403480697}
-  ButtonAdjacent1: {fileID: 129916373}
-  ActiveSprite: {fileID: 0}
-  InactiveSprite: {fileID: 0}
+  ButtonPrev: {fileID: 129916373}
+  ActiveSprite: {fileID: 21300000, guid: 8a5290ffb788ce54ab6f283faad0274a, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: e1c951379ac307e4fbdfa7de234ccdb8, type: 3}
   Active: 0
 --- !u!1 &411759686
 GameObject:
@@ -1760,7 +1812,7 @@ RectTransform:
   m_GameObject: {fileID: 513024683}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 1
@@ -1792,7 +1844,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1810,7 +1862,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 513024688}
-        m_MethodName: SetAllAdjacentButtonInteractable
+        m_MethodName: ToggleActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1871,6 +1923,9 @@ MonoBehaviour:
   ButtonAdjacent1: {fileID: 1492746833}
   ButtonAdjacent2: {fileID: 1946515999}
   ButtonAdjacent3: {fileID: 1245247380}
+  ButtonPrev: {fileID: 1203736189}
+  ActiveSprite: {fileID: 21300000, guid: 0cd973f73cb6c0e4abfefc3d7c4dfc69, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 9849791a59a87474a899bd22382c0f05, type: 3}
 --- !u!1 &526659195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,7 +2021,7 @@ RectTransform:
   m_GameObject: {fileID: 651204748}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 19
@@ -1998,7 +2053,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2014,7 +2069,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 651204751}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 651204753}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &651204751
@@ -2063,9 +2129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 651204750}
-  ButtonAdjacent1: {fileID: 129916373}
-  ActiveSprite: {fileID: 0}
-  InactiveSprite: {fileID: 0}
+  ButtonPrev: {fileID: 129916373}
+  ActiveSprite: {fileID: 21300000, guid: 5c4ccdbba4c1b3444afc8bd338670e47, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 2cdfec1342dc31b48af7934a42f098b6, type: 3}
   Active: 0
 --- !u!1 &664480112
 GameObject:
@@ -2345,7 +2411,7 @@ RectTransform:
   m_GameObject: {fileID: 733330929}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 22
@@ -2377,7 +2443,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2393,7 +2459,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 733330932}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 733330934}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &733330932
@@ -2442,9 +2519,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 733330931}
-  ButtonAdjacent1: {fileID: 27996558}
-  ActiveSprite: {fileID: 0}
-  InactiveSprite: {fileID: 0}
+  ButtonPrev: {fileID: 27996558}
+  ActiveSprite: {fileID: 21300000, guid: 6a1d5edac4d6c494d848ed9c525ea3c4, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 4250cc9e96299794b90daa10ab107be8, type: 3}
   Active: 0
 --- !u!1 &747727483
 GameObject:
@@ -2503,7 +2580,7 @@ RectTransform:
   m_GameObject: {fileID: 789830135}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 23
@@ -2535,7 +2612,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2551,7 +2628,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 789830138}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 789830140}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &789830138
@@ -2600,9 +2688,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 789830137}
-  ButtonAdjacent1: {fileID: 27996558}
-  ActiveSprite: {fileID: 0}
-  InactiveSprite: {fileID: 0}
+  ButtonPrev: {fileID: 27996558}
+  ActiveSprite: {fileID: 21300000, guid: 0fa5056d3095f344ebf0d134fbd51a29, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 2cb1393ab890b6c44b0eb0b44d69817b, type: 3}
   Active: 0
 --- !u!1 &838409499
 GameObject:
@@ -2631,7 +2719,7 @@ RectTransform:
   m_GameObject: {fileID: 838409499}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 10
@@ -2663,7 +2751,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2679,7 +2767,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 838409502}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 838409504}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &838409502
@@ -2728,9 +2827,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 838409501}
-  ButtonAdjacent1: {fileID: 1245247380}
-  ActiveSprite: {fileID: 0}
-  InactiveSprite: {fileID: 0}
+  ButtonPrev: {fileID: 1245247380}
+  ActiveSprite: {fileID: 21300000, guid: 04e623f8582a8c34aaed160350138ceb, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 67f73b7bc49709f428bee2dd723b15dc, type: 3}
   Active: 0
 --- !u!1 &961661230
 GameObject:
@@ -3165,7 +3264,7 @@ RectTransform:
   m_GameObject: {fileID: 1096970532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 3
@@ -3197,7 +3296,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3215,7 +3314,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1096970537}
-        m_MethodName: SetAllAdjacentButtonInteractable
+        m_MethodName: ToggleActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3276,6 +3375,9 @@ MonoBehaviour:
   ButtonAdjacent1: {fileID: 155071447}
   ButtonAdjacent2: {fileID: 1276087008}
   ButtonAdjacent3: {fileID: 27996558}
+  ButtonPrev: {fileID: 1203736189}
+  ActiveSprite: {fileID: 21300000, guid: 73cc34ad1d78340458ad2853d41b3f5a, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 86c0d9ad68e7a9a4cab3d86b612adadd, type: 3}
 --- !u!1 &1135299061
 GameObject:
   m_ObjectHideFlags: 0
@@ -3439,7 +3541,7 @@ RectTransform:
   m_GameObject: {fileID: 1203736187}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 0
@@ -3471,7 +3573,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3489,7 +3591,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1203736192}
-        m_MethodName: SetAllAdjacentButtonInteractable
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1203736192}
+        m_MethodName: ToggleActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3551,6 +3664,8 @@ MonoBehaviour:
   ButtonRight: {fileID: 1635137724}
   ButtonBottom: {fileID: 1096970534}
   ButtonLeft: {fileID: 1259574123}
+  ActiveSprite: {fileID: 21300000, guid: 473b9806ae33cfe4290e984884670e28, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 1a20a49a52a2c9041bb7567620afbcfc, type: 3}
 --- !u!1 &1217714177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3646,7 +3761,7 @@ RectTransform:
   m_GameObject: {fileID: 1233316606}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 14
@@ -3678,7 +3793,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3695,12 +3810,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1233316606}
-        m_MethodName: 
+      - m_Target: {fileID: 1233316611}
+        m_MethodName: ToggleActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3754,7 +3869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 1233316608}
-  ButtonAdjacent1: {fileID: 1555400666}
+  ButtonPrev: {fileID: 1555400666}
   ActiveSprite: {fileID: 21300000, guid: d7f9854e004927f43ad9aec4d6663390, type: 3}
   InactiveSprite: {fileID: 21300000, guid: 57ca0639cf002ed469d4dd51b1e9b596, type: 3}
   Active: 0
@@ -3785,7 +3900,7 @@ RectTransform:
   m_GameObject: {fileID: 1245247378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 9
@@ -3817,7 +3932,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3835,7 +3950,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1245247383}
-        m_MethodName: SetAllAdjacentButtonInteractable
+        m_MethodName: ToggleActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3896,6 +4011,9 @@ MonoBehaviour:
   ButtonAdjacent1: {fileID: 838409501}
   ButtonAdjacent2: {fileID: 104725137}
   ButtonAdjacent3: {fileID: 1442403308}
+  ButtonPrev: {fileID: 513024685}
+  ActiveSprite: {fileID: 21300000, guid: e07db354d748af044b2d49c4da2d616d, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 12da940ca9c0fcf4ea7d598488559ce7, type: 3}
 --- !u!1 &1259574121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,7 +4041,7 @@ RectTransform:
   m_GameObject: {fileID: 1259574121}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 4
@@ -3955,7 +4073,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3973,7 +4091,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1259574126}
-        m_MethodName: SetAllAdjacentButtonInteractable
+        m_MethodName: ToggleActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4034,6 +4152,9 @@ MonoBehaviour:
   ButtonAdjacent1: {fileID: 1946515999}
   ButtonAdjacent2: {fileID: 155071447}
   ButtonAdjacent3: {fileID: 129916373}
+  ButtonPrev: {fileID: 1203736189}
+  ActiveSprite: {fileID: 21300000, guid: 28e26b951c8c04e49a91409e55410476, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 382b5c9a741e55640bf67649bbde068e, type: 3}
 --- !u!1 &1276087006
 GameObject:
   m_ObjectHideFlags: 0
@@ -4061,7 +4182,7 @@ RectTransform:
   m_GameObject: {fileID: 1276087006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 7
@@ -4093,7 +4214,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4109,7 +4230,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1276087009}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1276087011}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1276087009
@@ -4160,6 +4292,8 @@ MonoBehaviour:
   myButton: {fileID: 1276087008}
   ButtonAdjacent1: {fileID: 1635137724}
   ButtonAdjacent2: {fileID: 1096970534}
+  ActiveSprite: {fileID: 21300000, guid: 735cfb99ea8f13c4b8c43b59e3cd25e4, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 86d126d7f580adf4b8696f0bd18fd1be, type: 3}
 --- !u!1 &1330191439
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,7 +4321,7 @@ RectTransform:
   m_GameObject: {fileID: 1330191439}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 24
@@ -4219,7 +4353,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4235,7 +4369,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1330191442}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1330191444}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1330191442
@@ -4284,9 +4429,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 1330191441}
-  ButtonAdjacent1: {fileID: 27996558}
-  ActiveSprite: {fileID: 0}
-  InactiveSprite: {fileID: 0}
+  ButtonPrev: {fileID: 27996558}
+  ActiveSprite: {fileID: 21300000, guid: add9ccc752ae1b84cadccf5471c2db63, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 3b5e5bf5c7565a948ad9e7853c0f3079, type: 3}
   Active: 0
 --- !u!1 &1336178066
 GameObject:
@@ -4519,7 +4664,7 @@ RectTransform:
   m_GameObject: {fileID: 1442403306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 12
@@ -4551,7 +4696,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4567,7 +4712,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1442403309}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1442403311}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1442403309
@@ -4616,9 +4772,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 1442403308}
-  ButtonAdjacent1: {fileID: 1245247380}
-  ActiveSprite: {fileID: 0}
-  InactiveSprite: {fileID: 0}
+  ButtonPrev: {fileID: 1245247380}
+  ActiveSprite: {fileID: 21300000, guid: dd722aaa4a938dc419688e96c6f8baec, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: e5710d85c21a3dc4f937558e017838a2, type: 3}
   Active: 0
 --- !u!1 &1492746831
 GameObject:
@@ -4647,7 +4803,7 @@ RectTransform:
   m_GameObject: {fileID: 1492746831}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 5
@@ -4679,7 +4835,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4695,7 +4851,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1492746834}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1492746836}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1492746834
@@ -4746,6 +4913,8 @@ MonoBehaviour:
   myButton: {fileID: 1492746833}
   ButtonAdjacent1: {fileID: 513024685}
   ButtonAdjacent2: {fileID: 1635137724}
+  ActiveSprite: {fileID: 21300000, guid: 7483d6de41c0a6c4ca709ff5d678bc08, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 8bdd262f4f97b104592483f17fb32e05, type: 3}
 --- !u!1 &1507404560
 GameObject:
   m_ObjectHideFlags: 0
@@ -4841,7 +5010,7 @@ RectTransform:
   m_GameObject: {fileID: 1555400664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 13
@@ -4873,7 +5042,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4891,7 +5060,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1555400669}
-        m_MethodName: SetAllAdjacentButtonInteractable
+        m_MethodName: ToggleActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4952,6 +5121,9 @@ MonoBehaviour:
   ButtonAdjacent1: {fileID: 1233316608}
   ButtonAdjacent2: {fileID: 279360357}
   ButtonAdjacent3: {fileID: 86779080}
+  ButtonPrev: {fileID: 1635137724}
+  ActiveSprite: {fileID: 21300000, guid: c23ab8897de709b458fd86e6790257c7, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: f2c3405f54f21d54b8bcb074c3ed20f2, type: 3}
 --- !u!1 &1613979334
 GameObject:
   m_ObjectHideFlags: 0
@@ -5047,7 +5219,7 @@ RectTransform:
   m_GameObject: {fileID: 1635137722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 2
@@ -5079,7 +5251,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5097,7 +5269,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1635137727}
-        m_MethodName: SetAllAdjacentButtonInteractable
+        m_MethodName: ToggleActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5158,6 +5330,9 @@ MonoBehaviour:
   ButtonAdjacent1: {fileID: 1492746833}
   ButtonAdjacent2: {fileID: 1276087008}
   ButtonAdjacent3: {fileID: 1555400666}
+  ButtonPrev: {fileID: 1203736189}
+  ActiveSprite: {fileID: 21300000, guid: a6fca74342776ef43a999e395278be47, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: 183ebdbf0f27e474bae31877db1c9d94, type: 3}
 --- !u!1 &1688297048
 GameObject:
   m_ObjectHideFlags: 0
@@ -5321,7 +5496,7 @@ RectTransform:
   m_GameObject: {fileID: 1760738391}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 18
@@ -5353,7 +5528,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5369,7 +5544,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1760738394}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1760738396}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1760738394
@@ -5418,9 +5604,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 1760738393}
-  ButtonAdjacent1: {fileID: 129916373}
-  ActiveSprite: {fileID: 0}
-  InactiveSprite: {fileID: 0}
+  ButtonPrev: {fileID: 129916373}
+  ActiveSprite: {fileID: 21300000, guid: 0b55d9a23a0a65b4494b5944d3bb82af, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: efabea80e3e4f31489e8fbb484d8e5a9, type: 3}
   Active: 0
 --- !u!1 &1821575786
 GameObject:
@@ -5594,7 +5780,7 @@ RectTransform:
   m_GameObject: {fileID: 1946515997}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 707073410}
   m_RootOrder: 6
@@ -5626,7 +5812,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5642,7 +5828,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1946516000}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1946516002}
+        m_MethodName: ToggleActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1946516000
@@ -5693,6 +5890,8 @@ MonoBehaviour:
   myButton: {fileID: 1946515999}
   ButtonAdjacent1: {fileID: 513024685}
   ButtonAdjacent2: {fileID: 1259574123}
+  ActiveSprite: {fileID: 21300000, guid: 31bc4901ab08c8b46b4c7d6ede40985a, type: 3}
+  InactiveSprite: {fileID: 21300000, guid: f3290aefc9e97f646adacb405aef05a2, type: 3}
 --- !u!1 &1958654074
 GameObject:
   m_ObjectHideFlags: 0

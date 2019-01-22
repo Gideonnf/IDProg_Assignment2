@@ -18,11 +18,15 @@ public class RotatePivot : MonoBehaviour {
     private int pannelIndex;
     [SerializeField]
     private GameObject[] pannels;
+    [SerializeField]
+    private GameObject specialCase;
+    private bool optionSide;
 
     // Attach the Instance
     private void Awake()
     {
         m_Instance = this;
+        optionSide = false;
     }
 
     // Use this for initialization
@@ -65,26 +69,26 @@ public class RotatePivot : MonoBehaviour {
     private void RotateRight()
     {
         // Do any necessary actions BEFORE rotating
-        //BeforeRotateAction();
+        BeforeRotateAction();
         // Go to next Pannel Index
         pannelIndex = GetNextPannelIndex(pannelIndex);
         // Rotate
         transform.DORotate(-RotateAmount, 0.6f, RotateMode.LocalAxisAdd);
         //Debug.Log("RIGHT");
         // Do any necessary actions AFTER rotating
-        //AfterRotateAction();
+        AfterRotateAction();
     }
     private void RotateLeft()
     {
         // Do any necessary actions BEFORE rotating
-        //BeforeRotateAction();
+        BeforeRotateAction();
         // Go to previous Pannel Index
         pannelIndex = GetPreviousPannelIndex(pannelIndex);
         // Rotate
         transform.DORotate(RotateAmount, 0.6f, RotateMode.LocalAxisAdd);
         //Debug.Log("LEFT");
         // Do any necessary actions AFTER rotating
-        //AfterRotateAction();
+        AfterRotateAction();
     }
 
 
@@ -111,6 +115,35 @@ public class RotatePivot : MonoBehaviour {
         pannels[oppositeIndex].SetActive(false);
         pannels[GetNextPannelIndex(oppositeIndex)].SetActive(false);
         pannels[GetPreviousPannelIndex(oppositeIndex)].SetActive(false);
+
+        // Check if we need to reposition the option page
+        // as we only have one option page, in order to log down the users's settings
+        if (optionSide)
+        {
+            if (pannelIndex == 0 ||
+                pannelIndex == 6)
+            {
+                specialCase.SetActive(true);
+                specialCase.GetComponent<RectTransform>().anchoredPosition = new Vector2(2059.0f, 385.0f);
+                specialCase.GetComponent<RectTransform>().Rotate(new Vector3(0, 1, 0), 180);
+
+                optionSide = false;
+            }       
+        }
+        else
+        {
+            if (pannelIndex == 2 ||
+           pannelIndex == 4)
+            {
+                specialCase.SetActive(true);
+                specialCase.GetComponent<RectTransform>().anchoredPosition = new Vector2(-2036.0f, 0.0f);
+                specialCase.GetComponent<RectTransform>().Rotate(new Vector3(0, 1, 0), -180);
+                optionSide = true;
+            }
+        }
+        specialCase.SetActive(true);
+
+
     }
     // Travese to Next Pannel Index in Array
     private int GetNextPannelIndex(int currentIndex)

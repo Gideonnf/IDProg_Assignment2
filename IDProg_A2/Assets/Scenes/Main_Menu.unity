@@ -527,7 +527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &165915485
 RectTransform:
   m_ObjectHideFlags: 0
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 185989475}
   - component: {fileID: 185989477}
   - component: {fileID: 185989476}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: US
   m_TagString: EditableUI
   m_Icon: {fileID: 0}
@@ -1160,7 +1160,7 @@ GameObject:
   - component: {fileID: 392745729}
   - component: {fileID: 392745731}
   - component: {fileID: 392745730}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Germany
   m_TagString: EditableUI
   m_Icon: {fileID: 0}
@@ -1242,7 +1242,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 414714412}
-  m_LocalRotation: {x: -0.0011477141, y: -0.7071059, z: 0.0010860119, w: 0.707106}
+  m_LocalRotation: {x: 0.0011477141, y: 0.7071059, z: -0.0010860119, w: -0.707106}
   m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1.0000122, y: 1.0000117, z: 1.0000123}
   m_Children:
@@ -1252,7 +1252,7 @@ RectTransform:
   - {fileID: 1470599150}
   m_Father: {fileID: 1675432911}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.0050000004, y: -90, z: 0.18100001}
+  m_LocalEulerAnglesHint: {x: -0.0050000004, y: 270, z: 0.18100001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 2059, y: 385}
@@ -2009,7 +2009,7 @@ GameObject:
   - component: {fileID: 699979675}
   - component: {fileID: 699979677}
   - component: {fileID: 699979676}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: France
   m_TagString: EditableUI
   m_Icon: {fileID: 0}
@@ -3792,7 +3792,7 @@ GameObject:
   - component: {fileID: 1164770412}
   - component: {fileID: 1164770414}
   - component: {fileID: 1164770413}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Korea
   m_TagString: EditableUI
   m_Icon: {fileID: 0}
@@ -4594,7 +4594,7 @@ GameObject:
   - component: {fileID: 1353124814}
   - component: {fileID: 1353124816}
   - component: {fileID: 1353124815}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Japan
   m_TagString: EditableUI
   m_Icon: {fileID: 0}
@@ -5468,7 +5468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1576620735
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5761,7 +5761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1623161615
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5788,7 +5788,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1623161614}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -5982,6 +5982,7 @@ GameObject:
   - component: {fileID: 1661231791}
   - component: {fileID: 1661231793}
   - component: {fileID: 1661231792}
+  - component: {fileID: 1661231794}
   m_Layer: 0
   m_Name: Language_IMG
   m_TagString: EditableUI
@@ -6047,6 +6048,38 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1661231790}
   m_CullTransparentMesh: 0
+--- !u!114 &1661231794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661231790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805c2e83f0080e743b271134c390cb31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notSelected:
+  - {fileID: 21300000, guid: 495b325ebf5cbad45bc04b89c51faa4c, type: 3}
+  - {fileID: 21300000, guid: 8895af9c98c45ac4f9156ca5c46679b5, type: 3}
+  - {fileID: 21300000, guid: 97ac96de8f432f8488533f27eed8696d, type: 3}
+  - {fileID: 21300000, guid: 1f0f1b16369d5a542b537a6f40a4a688, type: 3}
+  - {fileID: 21300000, guid: 61ab43d8b45945f4ab2da5d14d238f19, type: 3}
+  - {fileID: 21300000, guid: e1e4a6aea484beb4a86e7bdf6cf20e16, type: 3}
+  Selected:
+  - {fileID: 21300000, guid: 200a920fa6b58ed49bf2122355fe5be3, type: 3}
+  - {fileID: 21300000, guid: dfe8f992322f05b4b9dabefbc7e2cdb1, type: 3}
+  - {fileID: 21300000, guid: 0862667dd88798e4f9822a59a2518ef3, type: 3}
+  - {fileID: 21300000, guid: fe1921529570f2c4a9c7969fb5c571cb, type: 3}
+  - {fileID: 21300000, guid: 9cc246eb1849418439f310c4c1471683, type: 3}
+  - {fileID: 21300000, guid: b7853e871bc3f8248ad914bc92b1f051, type: 3}
+  languages:
+  - {fileID: 185989474}
+  - {fileID: 699979674}
+  - {fileID: 392745728}
+  - {fileID: 1353124813}
+  - {fileID: 1164770411}
+  - {fileID: 1852444831}
 --- !u!1 &1675432910
 GameObject:
   m_ObjectHideFlags: 0
@@ -6109,6 +6142,7 @@ MonoBehaviour:
   - {fileID: 1561615182}
   - {fileID: 1473427023}
   - {fileID: 414714412}
+  specialCase: {fileID: 414714412}
 --- !u!1 &1682429827
 GameObject:
   m_ObjectHideFlags: 0
@@ -6481,7 +6515,7 @@ GameObject:
   - component: {fileID: 1852444832}
   - component: {fileID: 1852444834}
   - component: {fileID: 1852444833}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: China
   m_TagString: EditableUI
   m_Icon: {fileID: 0}
@@ -6940,7 +6974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9433962, g: 0.004449993, b: 0.004449993, a: 1}
+  m_Color: {r: 0.15294118, g: 0.7372549, b: 0.09411765, a: 0.83137256}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

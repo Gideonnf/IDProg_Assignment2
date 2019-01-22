@@ -58,15 +58,15 @@ public class Swipe : MonoBehaviour
             tap = true;
             isDragging = true;
             startTouch = Input.mousePosition;
-            Debug.Log("TAPPP");
+            //Debug.Log("TAPPP");
             CheckCollidedWithGO(startTouch);
         }
         else if(Input.GetMouseButtonUp(0))
         {
             Reset();
             isDragging = false;
+            // Reset Selected GO
             m_currentSelectedGO = null;
-            //Debug.Log("SELECTED_RESETEED!!");
         }
         #endregion
 
@@ -81,15 +81,16 @@ public class Swipe : MonoBehaviour
                 tap = true;
                 isDragging = true;
                 startTouch = Input.touches[0].position;
-                Debug.Log("TAPPP");
+                // Get Collided GO
+                CheckCollidedWithGO(startTouch);
             }
             else if(Input.touches[0].phase == TouchPhase.Ended ||
                 Input.touches[0].phase == TouchPhase.Canceled)
             {
                 Reset();
                 isDragging = false;
+                // Reset Selected GO
                 m_currentSelectedGO = null;
-                //Debug.Log("SELECTED_RESETEED!!");
             }
         }
         #endregion

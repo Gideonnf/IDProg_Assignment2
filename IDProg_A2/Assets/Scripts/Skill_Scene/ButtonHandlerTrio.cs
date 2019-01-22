@@ -11,9 +11,15 @@ public class ButtonHandlerTrio : MonoBehaviour {
     public Button ButtonAdjacent2;
     public Button ButtonAdjacent3;
 
+    public Sprite ActiveSprite;
+    public Sprite InactiveSprite;
+
+    bool Active;
+
     // Use this for initialization
     void Start()
     {
+        Active = false;
         myButton.interactable = false;
     }
 
@@ -27,5 +33,14 @@ public class ButtonHandlerTrio : MonoBehaviour {
         ButtonAdjacent1.interactable = true;
         ButtonAdjacent2.interactable = true;
         ButtonAdjacent3.interactable = true;
+    }
+
+    public void ToggleActive()
+    {
+        Active = !Active;
+        if (Active == true)
+            myButton.GetComponent<Image>().sprite = ActiveSprite;
+        else
+            myButton.GetComponent<Image>().sprite = InactiveSprite;
     }
 }

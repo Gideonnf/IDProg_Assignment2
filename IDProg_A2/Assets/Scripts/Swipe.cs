@@ -27,7 +27,7 @@ public class Swipe : MonoBehaviour
     // Input Related
     private bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
     private bool isDragging = false;
-    private Vector2 startTouch, swipeDelta;
+    private Vector2 startTouch, swipeDelta, lastTouchedPos;
 
 
     // Awake is called before all Starts..
@@ -58,6 +58,7 @@ public class Swipe : MonoBehaviour
             tap = true;
             isDragging = true;
             startTouch = Input.mousePosition;
+            lastTouchedPos = startTouch;
             //Debug.Log("TAPPP");
             CheckCollidedWithGO(startTouch);
         }
@@ -81,6 +82,7 @@ public class Swipe : MonoBehaviour
                 tap = true;
                 isDragging = true;
                 startTouch = Input.touches[0].position;
+                lastTouchedPos = startTouch;
                 // Get Collided GO
                 CheckCollidedWithGO(startTouch);
             }
@@ -173,7 +175,7 @@ public class Swipe : MonoBehaviour
         //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
         foreach (RaycastResult result in results)
         {
-            //Debug.Log("Hit " + result.gameObject.name);
+            Debug.Log("Hit " + result.gameObject.name);
 
             // Attach the collided GO
             m_currentSelectedGO = result.gameObject;
@@ -188,6 +190,7 @@ public class Swipe : MonoBehaviour
     
     public Vector2 GetSwipeDelta() { return swipeDelta; }
     public GameObject GetCurrentSelectedGO() { return m_currentSelectedGO; }
+    public Vector2 GetLastTouchedPosition() { return lastTouchedPos; }
     public bool GetTap() { return tap; }
     public bool GetSwipeLeft() { return swipeLeft; }
     public bool GetSwipeRight() { return swipeRight; }

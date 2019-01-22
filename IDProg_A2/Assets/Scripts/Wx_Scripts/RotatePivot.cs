@@ -23,37 +23,59 @@ public class RotatePivot : MonoBehaviour {
         // Detect Right Swipe
         if(Swipe.GetInstance().GetSwipeRight())
         {
-            // Do any necessary actions BEFORE rotating
-            BeforeSwipeAction();
-            // Go to next Pannel Index
-            pannelIndex = GetNextPannelIndex(pannelIndex);
-            // Rotate
-            transform.DORotate(-RotateAmount, 0.6f, RotateMode.LocalAxisAdd);
-            Debug.Log("RIGHT");
+            GameObject lastHitGo = Swipe.GetInstance().GetCurrentSelectedGO();
 
-            // Do any necessary actions AFTER rotating
-            AfterSwipeAction();
+            if (lastHitGo.name != "Handle" && lastHitGo.name != "Background")
+                RotateRight();
         }
         // Detect Left Swipe
         else if(Swipe.GetInstance().GetSwipeLeft())
         {
-            // Do any necessary actions BEFORE rotating
-            BeforeSwipeAction();
-            // Go to previous Pannel Index
-            pannelIndex = GetPreviousPannelIndex(pannelIndex);
-            // Rotate
-            transform.DORotate(RotateAmount, 0.6f, RotateMode.LocalAxisAdd);
-            Debug.Log("LEFT");
+            GameObject lastHitGo = Swipe.GetInstance().GetCurrentSelectedGO();
 
-            // Do any necessary actions AFTER rotating
-            AfterSwipeAction();
+            if (lastHitGo.name != "Handle" && lastHitGo.name != "Background")
+                RotateLeft();
         }
 
 
 
 	}
 
-    private void BeforeSwipeAction()
+
+
+    private void RotateRight()
+    {
+        // Do any necessary actions BEFORE rotating
+        BeforeRotateAction();
+        // Go to next Pannel Index
+        pannelIndex = GetNextPannelIndex(pannelIndex);
+        // Rotate
+        transform.DORotate(-RotateAmount, 0.6f, RotateMode.LocalAxisAdd);
+        //Debug.Log("RIGHT");
+        // Do any necessary actions AFTER rotating
+        AfterRotateAction();
+    }
+    private void RotateLeft()
+    {
+        // Do any necessary actions BEFORE rotating
+        BeforeRotateAction();
+        // Go to previous Pannel Index
+        pannelIndex = GetPreviousPannelIndex(pannelIndex);
+        // Rotate
+        transform.DORotate(RotateAmount, 0.6f, RotateMode.LocalAxisAdd);
+        Debug.Log("LEFT");
+        // Do any necessary actions AFTER rotating
+        AfterRotateAction();
+    }
+
+
+
+
+    /******************************************************************
+     *      MISC FUNCTIONS
+     ******************************************************************/
+    // Any Actions to Take BEFORE rotating
+    private void BeforeRotateAction()
     {
         int oppositeIndex = GetOppositePannel();
         // Set opposite and beside pannels to true first
@@ -61,7 +83,8 @@ public class RotatePivot : MonoBehaviour {
         pannels[GetNextPannelIndex(oppositeIndex)].SetActive(true);
         pannels[GetPreviousPannelIndex(oppositeIndex)].SetActive(true);
     }
-    private void AfterSwipeAction()
+    // Any Actions to Take AFTER rotating
+    private void AfterRotateAction()
     {
         int oppositeIndex = GetOppositePannel();
         // Set opposite and beside pannels to false
@@ -70,10 +93,7 @@ public class RotatePivot : MonoBehaviour {
         pannels[GetNextPannelIndex(oppositeIndex)].SetActive(false);
         pannels[GetPreviousPannelIndex(oppositeIndex)].SetActive(false);
     }
-
-
-
-
+    // Travese to Next Pannel Index in Array
     private int GetNextPannelIndex(int currentIndex)
     {
         currentIndex++;
@@ -82,6 +102,7 @@ public class RotatePivot : MonoBehaviour {
         // return new Index
         return currentIndex;
     }
+    // Travese to Previous Pannel Index in Array
     private int GetPreviousPannelIndex(int currentIndex)
     {
         currentIndex--;
@@ -90,6 +111,7 @@ public class RotatePivot : MonoBehaviour {
         // return new Index
         return currentIndex;
     }
+    // Return the Opposite Array Index based on current pannelIndex
     private int GetOppositePannel()
     {
         int oppositeIndex = pannelIndex;

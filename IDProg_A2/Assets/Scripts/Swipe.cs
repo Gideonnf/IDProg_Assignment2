@@ -1,12 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class Swipe : MonoBehaviour {
+public class Swipe : MonoBehaviour
+{
+    // Storing the game object we collided with
+    private GameObject currentSelectedGO;   
 
+    // Graphics Raycasting
+    GraphicRaycaster m_Raycaster;
+    PointerEventData m_PointerEventData;
+    [SerializeField]
+    EventSystem m_EventSystem;
+
+    // Input Related
     private bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
     private bool isDragging = false;
     private Vector2 startTouch, swipeDelta;
+
+    private void Start()
+    {
+        //Fetch the Raycaster from the GameObject (the Canvas)
+        m_Raycaster = GetComponent<GraphicRaycaster>();
+        //Fetch the Event System from the Scene
+        //m_EventSystem = GetComponent<EventSystem>();
+    }
 
     private void Update()
     {
@@ -18,6 +38,8 @@ public class Swipe : MonoBehaviour {
             tap = true;
             isDragging = true;
             startTouch = Input.mousePosition;
+            Debug.Log("TAPPP");
+            CheckCollidedWithGO(startTouch);
         }
         else if(Input.GetMouseButtonUp(0))
         {
@@ -37,6 +59,7 @@ public class Swipe : MonoBehaviour {
                 tap = true;
                 isDragging = true;
                 startTouch = Input.touches[0].position;
+                Debug.Log("TAPPP");
             }
             else if(Input.touches[0].phase == TouchPhase.Ended ||
                 Input.touches[0].phase == TouchPhase.Canceled)
@@ -47,6 +70,8 @@ public class Swipe : MonoBehaviour {
         }
         #endregion
 
+
+        #region Swiping
         // Calculate the Distance
         swipeDelta = Vector2.zero;
         if(isDragging)
@@ -96,6 +121,7 @@ public class Swipe : MonoBehaviour {
 
             Reset();
         }
+        #endregion
     }
 
     private void Reset()
@@ -104,10 +130,37 @@ public class Swipe : MonoBehaviour {
         isDragging = false;
     }
 
+    private GameObject CheckCollidedWithGO(Vector3 touchedPosition)
+    {
+        // reset selectedGO
+        currentSelectedGO = null;
+        //Set up the new Pointer Event
+        m_PointerEventData = new PointerEventData(m_EventSystem);
+        //Set the Pointer Event Position to that of the mouse position
+        m_PointerEventData.position = touchedPosition;//Input.mousePosition;
 
+        //Create a list of Raycast Results
+        List<RaycastResult> results = new List<RaycastResult>();
 
+        //Raycast using the Graphics Raycaster and mouse click position
+        m_Raycaster.Raycast(m_PointerEventData, results);
 
+        //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+        foreach (RaycastResult result in results)
+        {
+            Debug.Log("Hit " + result.gameObject.name);
+            currentSelectedGO = result.gameObject;
+            // To make sure only detect the first UI Hit
+            break;
+        }
+
+        // return result
+        return currentSelectedGO;
+    }
+
+    
     public Vector2 GetSwipeDelta { get { return swipeDelta; } }
+    public bool GetTap { get { return tap; } }
     public bool GetSwipeLeft { get { return swipeLeft; } }
     public bool GetSwipeRight { get { return swipeRight; } }
     public bool GetSwipeUp { get { return swipeUp; } }

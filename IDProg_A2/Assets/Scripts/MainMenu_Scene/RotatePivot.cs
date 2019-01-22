@@ -6,13 +6,27 @@ using DG.Tweening;
 
 public class RotatePivot : MonoBehaviour {
 
+    // Static Instance
+    private static RotatePivot m_Instance;
+    public static RotatePivot GetInstance()
+    {
+        return m_Instance;
+    }
+
+    // Rotation Related
     private Vector3 RotateAmount;
     private int pannelIndex;
     [SerializeField]
     private GameObject[] pannels;
 
-	// Use this for initialization
-	void Start () {
+    // Attach the Instance
+    private void Awake()
+    {
+        m_Instance = this;
+    }
+
+    // Use this for initialization
+    void Start () {
         RotateAmount.Set(0, 45, 0);
         pannelIndex = 0;
     }
@@ -25,7 +39,7 @@ public class RotatePivot : MonoBehaviour {
         {
             GameObject lastHitGo = Swipe.GetInstance().GetCurrentSelectedGO();
 
-            if (lastHitGo.tag != "EditableUI")
+            if (lastHitGo != null || lastHitGo.tag != "EditableUI")
                 RotateRight();
         }
         // Detect Left Swipe
@@ -33,7 +47,7 @@ public class RotatePivot : MonoBehaviour {
         {
             GameObject lastHitGo = Swipe.GetInstance().GetCurrentSelectedGO();
 
-            if (lastHitGo.tag != "EditableUI")
+            if (lastHitGo != null || lastHitGo.tag != "EditableUI")
                 RotateLeft();
         }
 
@@ -72,8 +86,8 @@ public class RotatePivot : MonoBehaviour {
 
 
     /******************************************************************
-     *      MISC FUNCTIONS
-     ******************************************************************/
+    *      MISC FUNCTIONS
+    ******************************************************************/
     // Any Actions to Take BEFORE rotating
     private void BeforeRotateAction()
     {
@@ -127,4 +141,13 @@ public class RotatePivot : MonoBehaviour {
 
         return oppositeIndex;
     }
+
+
+    // Get the Pannel Index
+    public int GetPannelIndex()
+    {
+        return pannelIndex;
+    }
+
+    /******************************************************************/
 }

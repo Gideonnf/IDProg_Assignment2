@@ -123,12 +123,12 @@ public class Swipe : MonoBehaviour
                 if (x < 0)
                 {
                     swipeLeft = true;
-                    Debug.Log("LEFTT");
+                    //Debug.Log("LEFTT");
                 }
                 else
                 {
                     swipeRight = true;
-                    Debug.Log("RIGHTTT");
+                    //Debug.Log("RIGHTTT");
                 }
             }
             else
@@ -137,12 +137,12 @@ public class Swipe : MonoBehaviour
                 if (y < 0)
                 {
                     swipeDown = true;
-                    Debug.Log("DOOWN");
+                    //Debug.Log("DOOWN");
                 }
                 else
                 {
                     swipeUp = true;
-                    Debug.Log("UPP");
+                    //Debug.Log("UPP");
                 }
             }
 

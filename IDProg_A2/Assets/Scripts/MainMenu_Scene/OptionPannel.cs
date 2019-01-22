@@ -8,12 +8,12 @@ public class OptionPannel : MonoBehaviour {
 
     private float minHeight = -2237.0f;
     private float maxHeight = -585.0f;
+    // For Storing of Own Position
     private RectTransform rectTransform;
 
     // Use this for initialization
     void Start () {
         rectTransform = GetComponent<RectTransform>();
-
     }
 	
 	// Update is called once per frame
@@ -23,6 +23,12 @@ public class OptionPannel : MonoBehaviour {
         if (RotatePivot.GetInstance().GetPannelIndex() == 3 ||
             RotatePivot.GetInstance().GetPannelIndex() == 7)
         {
+
+            if (Swipe.GetInstance().GetCurrentSelectedGO() != null)
+            {
+                // Detect Language Clicking
+                DetectLanguageChange();
+            }
 
             // Detect Up Swipe
             if (Swipe.GetInstance().GetSwipeUp())
@@ -48,6 +54,20 @@ public class OptionPannel : MonoBehaviour {
             }
 
 
+        }
+
+    }
+
+
+
+    private void DetectLanguageChange()
+    {
+        // check tapped which flag
+        // 9 = Language Layer
+        if (Swipe.GetInstance().GetCurrentSelectedGO().layer == 9)
+        {
+            // Find the Child with the script LanguageChange
+            GameObject.Find("Language_IMG").GetComponent<LanguageChange>().ChangeLanguage(Swipe.GetInstance().GetCurrentSelectedGO().name);
         }
 
     }

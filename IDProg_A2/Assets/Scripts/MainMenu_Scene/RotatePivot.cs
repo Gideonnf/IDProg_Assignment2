@@ -65,26 +65,26 @@ public class RotatePivot : MonoBehaviour {
     private void RotateRight()
     {
         // Do any necessary actions BEFORE rotating
-        BeforeRotateAction();
+        //BeforeRotateAction();
         // Go to next Pannel Index
         pannelIndex = GetNextPannelIndex(pannelIndex);
         // Rotate
         transform.DORotate(-RotateAmount, 0.6f, RotateMode.LocalAxisAdd);
         //Debug.Log("RIGHT");
         // Do any necessary actions AFTER rotating
-        AfterRotateAction();
+        //AfterRotateAction();
     }
     private void RotateLeft()
     {
         // Do any necessary actions BEFORE rotating
-        BeforeRotateAction();
+        //BeforeRotateAction();
         // Go to previous Pannel Index
         pannelIndex = GetPreviousPannelIndex(pannelIndex);
         // Rotate
         transform.DORotate(RotateAmount, 0.6f, RotateMode.LocalAxisAdd);
         //Debug.Log("LEFT");
         // Do any necessary actions AFTER rotating
-        AfterRotateAction();
+        //AfterRotateAction();
     }
 
 

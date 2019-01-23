@@ -8,8 +8,14 @@ public class OptionPannel : MonoBehaviour {
 
     private float minHeight = -2237.0f;
     private float maxHeight = -585.0f;
+    private float minShortcutX = 459.0f;
+    private float maxShortcutX = -33.0f;
+
     // For Storing of Own Position
     private RectTransform rectTransform;
+    // For Storing of where the ShortCut Section is
+    [SerializeField]
+    private RectTransform shortCutSectionTransform;
 
     // Use this for initialization
     void Start () {
@@ -33,28 +39,48 @@ public class OptionPannel : MonoBehaviour {
             // Detect Up Swipe
             if (Swipe.GetInstance().GetSwipeUp())
             {
-                float finalHeight = rectTransform.anchoredPosition.y + (Swipe.GetInstance().GetSwipeDelta().y * 0.25f);
+                float finalHeight = rectTransform.anchoredPosition.y + (Swipe.GetInstance().GetSwipeDelta().y * 9.0f);
                 if (finalHeight > maxHeight)
-                    rectTransform.DOAnchorPosY(finalHeight, 0.5f, true);
-                else
                     rectTransform.DOAnchorPosY(maxHeight, 0.5f, true);
+                else
+                    rectTransform.DOAnchorPosY(finalHeight, 0.5f, true);
 
                 Debug.Log("UP SWIPE!!");
             }
             // Detect Down Swipe
             else if (Swipe.GetInstance().GetSwipeDown())
             {
-                float finalHeight = rectTransform.anchoredPosition.y - (Swipe.GetInstance().GetSwipeDelta().y * 0.25f);
+                float finalHeight = rectTransform.anchoredPosition.y - (Swipe.GetInstance().GetSwipeDelta().y * 9.0f);
                 if (finalHeight < minHeight)
-                    rectTransform.DOAnchorPosY(finalHeight, 0.5f, true);
-                else
                     rectTransform.DOAnchorPosY(minHeight, 0.5f, true);
+                else
+                    rectTransform.DOAnchorPosY(finalHeight, 0.5f, true);
 
                 Debug.Log("DOWN SWIPE!!");
             }
 
 
-        }
+            // Detect Right Swipe
+            if (Swipe.GetInstance().GetSwipeRight())
+            {
+                // if within the shortcut section and swiped
+                if(RectTransformUtility.RectangleContainsScreenPoint(shortCutSectionTransform, Swipe.GetInstance().GetLastTouchedPosition()))
+                {
+                    shortCutSectionTransform.DOAnchorPosX(minShortcutX, 0.4f, true);
+                }
+            }
+            // Detect Left Swipe
+            else if (Swipe.GetInstance().GetSwipeLeft())
+            {
+                // if within the shortcut section and swiped
+                if (RectTransformUtility.RectangleContainsScreenPoint(shortCutSectionTransform, Swipe.GetInstance().GetLastTouchedPosition()))
+                {
+                    shortCutSectionTransform.DOAnchorPosX(maxShortcutX, 0.4f, true);
+                }
+            }
+
+
+        }   // End of Panel Checking
 
     }
 

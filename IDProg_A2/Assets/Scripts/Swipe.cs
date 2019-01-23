@@ -153,7 +153,7 @@ public class Swipe : MonoBehaviour
 
     private void Reset()
     {
-        startTouch = swipeDelta = Vector2.zero;
+        startTouch /*= swipeDelta*/ = Vector2.zero;
         isDragging = false;
     }
 

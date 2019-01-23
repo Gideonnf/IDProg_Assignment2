@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 3955022}
   m_Layer: 0
   m_Name: NotifiButton
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 230837002}
   m_Layer: 0
   m_Name: Volume_IMG
-  m_TagString: EditableUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1251,7 +1251,7 @@ GameObject:
   - component: {fileID: 326681790}
   m_Layer: 0
   m_Name: ShorcutsContent
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1357,7 +1357,7 @@ GameObject:
   - component: {fileID: 378318752}
   m_Layer: 0
   m_Name: languageText
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1513,7 +1513,7 @@ GameObject:
   - component: {fileID: 388217418}
   m_Layer: 0
   m_Name: VolButton
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2070,7 +2070,7 @@ GameObject:
   - component: {fileID: 568303362}
   m_Layer: 0
   m_Name: Notification_IMG
-  m_TagString: EditableUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3337,7 +3337,7 @@ GameObject:
   - component: {fileID: 915450478}
   m_Layer: 0
   m_Name: SoundTEXT
-  m_TagString: EditableUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4201,7 +4201,7 @@ GameObject:
   - component: {fileID: 1094381606}
   m_Layer: 0
   m_Name: NotificationsText
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5068,7 +5068,7 @@ GameObject:
   - component: {fileID: 1329288170}
   m_Layer: 0
   m_Name: MusicTEXT
-  m_TagString: EditableUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5556,7 +5556,7 @@ GameObject:
   - component: {fileID: 1445803483}
   m_Layer: 0
   m_Name: TextMeshPro Text
-  m_TagString: EditableUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6613,7 +6613,7 @@ GameObject:
   - component: {fileID: 1661231794}
   m_Layer: 0
   m_Name: Language_IMG
-  m_TagString: EditableUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7003,7 +7003,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1688811423}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -146154839, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -7158,7 +7158,7 @@ GameObject:
   - component: {fileID: 1820863932}
   m_Layer: 0
   m_Name: VolumeText
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7383,7 +7383,7 @@ GameObject:
   - component: {fileID: 1909937395}
   m_Layer: 0
   m_Name: LanButton
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7947,6 +7947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd12fb736d78bf4d98ad75f93168280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shortCutSectionTransform: {fileID: 326681789}
 --- !u!1 &2085841137
 GameObject:
   m_ObjectHideFlags: 0

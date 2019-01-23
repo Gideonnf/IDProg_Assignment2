@@ -50,7 +50,7 @@ public class OptionPannel : MonoBehaviour {
             // Detect Down Swipe
             else if (Swipe.GetInstance().GetSwipeDown())
             {
-                float finalHeight = rectTransform.anchoredPosition.y - (Swipe.GetInstance().GetSwipeDelta().y * 9.0f);
+                float finalHeight = rectTransform.anchoredPosition.y + (Swipe.GetInstance().GetSwipeDelta().y * 9.0f);
                 if (finalHeight < minHeight)
                     rectTransform.DOAnchorPosY(minHeight, 0.5f, true);
                 else

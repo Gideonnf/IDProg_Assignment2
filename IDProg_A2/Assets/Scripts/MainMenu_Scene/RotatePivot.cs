@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 // DOTween
 using DG.Tweening;
 
@@ -21,6 +22,7 @@ public class RotatePivot : MonoBehaviour {
     private bool rotating;
     private float rotateTime;
     private float rotatingTimer;
+    float originalAlpha, transparentAlpha;
     // Option Page
     [SerializeField]
     private GameObject specialCase;
@@ -43,10 +45,18 @@ public class RotatePivot : MonoBehaviour {
     void Start () {
         RotateAmount.Set(0, 45, 0);
         pannelIndex = 0;
+        // Get the Alphas to be used later
+        // when rotating
+        originalAlpha = 1.0f;
+        transparentAlpha = 0.3f;
+        // Set beside pannels to transparent
+        pannels[GetNextPannelIndex(pannelIndex)].GetComponent<CanvasGroup>().alpha = transparentAlpha;
+        pannels[GetPreviousPannelIndex(pannelIndex)].GetComponent<CanvasGroup>().alpha = transparentAlpha;
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         DoneRotate();
 
@@ -139,6 +149,9 @@ public class RotatePivot : MonoBehaviour {
         pannels[oppositeIndex].SetActive(true);
         pannels[GetNextPannelIndex(oppositeIndex)].SetActive(true);
         pannels[GetPreviousPannelIndex(oppositeIndex)].SetActive(true);
+        // Set beside pannels to opaque first
+        pannels[GetNextPannelIndex(pannelIndex)].GetComponent<CanvasGroup>().alpha = originalAlpha;
+        pannels[GetPreviousPannelIndex(pannelIndex)].GetComponent<CanvasGroup>().alpha = originalAlpha;
     }
     // Any Actions to Take AFTER rotating
     private void AfterRotateAction()
@@ -149,6 +162,9 @@ public class RotatePivot : MonoBehaviour {
         pannels[oppositeIndex].SetActive(false);
         pannels[GetNextPannelIndex(oppositeIndex)].SetActive(false);
         pannels[GetPreviousPannelIndex(oppositeIndex)].SetActive(false);
+        // Set beside pannels to transparent
+        pannels[GetNextPannelIndex(pannelIndex)].GetComponent<CanvasGroup>().alpha = transparentAlpha;
+        pannels[GetPreviousPannelIndex(pannelIndex)].GetComponent<CanvasGroup>().alpha = transparentAlpha;
 
         // Check if we need to reposition the option page
         // as we only have one option page, in order to log down the users's settings
@@ -180,9 +196,11 @@ public class RotatePivot : MonoBehaviour {
         // always set active as it will never be on the opposite 
         // side anymore as we are always moving it's position
         specialCase.SetActive(true);
+        //specialCase.GetComponent<CanvasGroup>().alpha = originalAlpha;
 
 
         // Start rotating timer
+        // to prevent mutliple rotations by player
         rotatingTimer = rotateTime;
         rotating = true;
     }

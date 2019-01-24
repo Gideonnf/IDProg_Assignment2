@@ -12,20 +12,20 @@ public class PlayerMovement : MonoBehaviour {
     }
     // Other Variables
     Vector3 vel;
-    Transform transform;
+    Transform currentTransform;
 
 
 	// Use this for initialization
 	void Start () {
         m_Instance = this;
         vel = Vector2.zero;
-        transform = GetComponent<Transform>();
+        currentTransform = GetComponent<Transform>();
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        transform.position += (vel * Time.deltaTime);
+        currentTransform.position += (vel * Time.deltaTime);
 
 	}
 

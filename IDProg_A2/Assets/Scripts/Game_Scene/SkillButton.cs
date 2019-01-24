@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-// DOTween
-using DG.Tweening;
 
 public class SkillButton : MonoBehaviour {
 
@@ -24,7 +22,7 @@ public class SkillButton : MonoBehaviour {
         if (!used)
             return;
 
-
+        // Reduce the fill amount on the image
         coolDownImage.fillAmount -= 1.0f / coolDownTime * Time.deltaTime;
         if(coolDownImage.fillAmount <= 0.0f)
         {

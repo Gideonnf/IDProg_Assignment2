@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+// DOTween
+using DG.Tweening;
 
 public class Stats : MonoBehaviour {
 
@@ -63,8 +65,8 @@ public class Stats : MonoBehaviour {
         if (currentHp == maxHp)
         {
             // make it transparent
-            HealthUI.GetComponent<CanvasGroup>().alpha = 0.0f;
-            ManaUI.GetComponent<CanvasGroup>().alpha = 0.0f;
+            HealthUI.GetComponent<CanvasGroup>().DOFade(0.0f, 0.6f);
+            ManaUI.GetComponent<CanvasGroup>().DOFade(0.0f, 0.6f);
             transparent = true;
         }
 
@@ -103,7 +105,7 @@ public class Stats : MonoBehaviour {
         // reset timer
         healthRegenRate = 0.0f;
         // make it opqaue
-        HealthUI.GetComponent<CanvasGroup>().alpha = 1.0f;
-        ManaUI.GetComponent<CanvasGroup>().alpha = 1.0f;
+        HealthUI.GetComponent<CanvasGroup>().DOFade(1.0f, 0.4f);
+        ManaUI.GetComponent<CanvasGroup>().DOFade(1.0f, 0.4f);
     }
 }

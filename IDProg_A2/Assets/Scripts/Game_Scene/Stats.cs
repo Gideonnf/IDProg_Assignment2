@@ -26,6 +26,7 @@ public class Stats : MonoBehaviour {
     private float maxHp, maxMana;
     private float currentHp, currentMana;
     float healthRegenRate, maxHealthRegenRate;
+    float idleTimer, maxIdleTimer;
     float maxWidth;
     bool transparent;
 
@@ -35,6 +36,9 @@ public class Stats : MonoBehaviour {
         currentMana = maxMana = 1650;
         maxHealthRegenRate = 5.0f;
         healthRegenRate = 0.0f;
+        idleTimer = 0.0f;
+        maxIdleTimer = 3.0f;
+
         maxWidth = 0.9597315f;
         transparent = true;
         // Set Data
@@ -54,31 +58,39 @@ public class Stats : MonoBehaviour {
         if (transparent)
             return;
 
-        // Only regen if timer is up
-        healthRegenRate += Time.deltaTime;
-        if (healthRegenRate > maxHealthRegenRate)
+        // Check if back to full Hp
+        if (currentHp == maxHp) 
         {
-            healthRegenRate = 0.0f;
-            currentHp++;
+            // if idled for awhile after recovering,
+            // then go back to transparent
+            if (idleTimer > maxIdleTimer)
+            {
+                // make it transparent
+                HealthUI.GetComponent<CanvasGroup>().DOFade(0.0f, 0.6f);
+                ManaUI.GetComponent<CanvasGroup>().DOFade(0.0f, 0.6f);
+                transparent = true;
+                return;
+            }
+            else
+                idleTimer += Time.deltaTime;
         }
-        // Check if back to full HP
-        if (currentHp == maxHp)
+        else
         {
-            // make it transparent
-            HealthUI.GetComponent<CanvasGroup>().DOFade(0.0f, 0.6f);
-            ManaUI.GetComponent<CanvasGroup>().DOFade(0.0f, 0.6f);
-            transparent = true;
+            // Only regen if timer is up
+            healthRegenRate += Time.deltaTime;
+            if (healthRegenRate > maxHealthRegenRate)
+            {
+                healthRegenRate = 0.0f;
+                currentHp++;
+
+                // after modifiying
+                RecalculateHPUI();
+            }
         }
 
 
-        // Set the Width of HP bar
-        Vector3 oldScale = HealthUI.transform.GetChild(0).localScale;
-        oldScale.x = maxWidth * (currentHp / maxHp);
-        HealthUI.transform.GetChild(0).localScale = oldScale;
-        // Set the Text
-        healthText.text = currentHp.ToString();
-
-    }
+       
+    }   // end of update
 
 
     public void TakeDamage(int damageAmount)
@@ -87,25 +99,52 @@ public class Stats : MonoBehaviour {
         // prevent player from dying
         currentHp = Mathf.Clamp(currentHp, 1, maxHp);
 
-        TakenDamage();
+        // after modifiying
+        RecalculateHPUI();
+
+        // Do other actions after altering Hp
+        StatsModified();
     }
     public void TakeMana(int manamount)
     {
         currentMana -= manamount;
+        // prevent player from running out
         currentMana = Mathf.Clamp(currentMana, 1, maxMana);
 
-        TakenDamage();
+        // after modifying
+        RecalculateManaUI();
+
+        // Do other actions after altering mana
+        StatsModified();
     }
 
 
-    private void TakenDamage()
+    private void StatsModified()
     {
         // reset boolean flag
         transparent = false;
-        // reset timer
-        healthRegenRate = 0.0f;
+        // reset timers
+        healthRegenRate = idleTimer = 0.0f;
         // make it opqaue
         HealthUI.GetComponent<CanvasGroup>().DOFade(1.0f, 0.4f);
         ManaUI.GetComponent<CanvasGroup>().DOFade(1.0f, 0.4f);
+    }
+    private void RecalculateHPUI()
+    {
+        // Set the Width of HP bar
+        Vector3 oldScale = HealthUI.transform.GetChild(0).localScale;
+        oldScale.x = maxWidth * (currentHp / maxHp);
+        HealthUI.transform.GetChild(0).localScale = oldScale;
+        // Set the Text
+        healthText.text = currentHp.ToString();
+    }
+    private void RecalculateManaUI()
+    {
+        // Set the Width of Mana bar
+        Vector3 oldScale = ManaUI.transform.GetChild(0).localScale;
+        oldScale.x = maxWidth * (currentMana / maxMana);
+        ManaUI.transform.GetChild(0).localScale = oldScale;
+        // Set the Text
+        manaText.text = currentMana.ToString();
     }
 }

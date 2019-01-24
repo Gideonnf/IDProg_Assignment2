@@ -175,7 +175,7 @@ public class Swipe : MonoBehaviour
         //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
         foreach (RaycastResult result in results)
         {
-            Debug.Log("Hit " + result.gameObject.name);
+            //Debug.Log("Hit " + result.gameObject.name);
 
             // Attach the collided GO
             m_currentSelectedGO = result.gameObject;

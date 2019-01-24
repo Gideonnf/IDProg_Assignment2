@@ -43,7 +43,7 @@ public class AttackButton : MonoBehaviour {
 
     public void BeTransparent()
     {
-        button.GetComponent<CanvasGroup>().DOFade(0.4f, 0.6f);
+        button.GetComponent<CanvasGroup>().DOFade(0.5f, 0.6f);
         // Reset Opaque Timer
         opaqueTimer = 0.0f;
     }

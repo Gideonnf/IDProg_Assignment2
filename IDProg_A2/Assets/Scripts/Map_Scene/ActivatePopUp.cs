@@ -6,26 +6,31 @@ public class ActivatePopUp : MonoBehaviour {
 
     [SerializeField]
     private GameObject[] popUps;
+    bool popActive;
 
 
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        popActive = false;
+    }
 
 
+    // Activate the GameObejct in the array Index
     public void OpenPopUp(int newIndex)
     {
         popUps[newIndex].SetActive(true);
+        popActive = true;
     }
+    // Deactivate the GameObejct in the array Index
     public void ClosePopUp(int newIndex)
     {
         popUps[newIndex].SetActive(false);
+        popActive = false;
+    }
+    // Returns popActive Bool
+    public bool GetPopActive()
+    {
+        return popActive;
     }
 
 }

@@ -49,7 +49,13 @@ public class PlayerMovement : MonoBehaviour {
         Vector2 mapVel = vel * 0.7f;
         mapVel.x *= 0.5f;
         mapVel = -mapVel;
-        // translate it 
+        //translate it
         miniMapTransform.anchoredPosition += (mapVel * Time.deltaTime);
+
+        //Vector3 newPos;
+        //newPos = currentTransform.localPosition;
+        //newPos.x += 47.9f;
+        //newPos.y += 116.6f;
+        //miniMapTransform.anchoredPosition = newPos;
     }
 }

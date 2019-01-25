@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SkillButton : MonoBehaviour {
 
     [SerializeField]
+    private GameObject coolDownObject;
     private Image coolDownImage;
     private bool used;
     private float coolDownTime;
@@ -14,6 +15,7 @@ public class SkillButton : MonoBehaviour {
 	void Start () {
         used = false;
         coolDownTime = 4.0f;
+        coolDownImage = coolDownObject.GetComponent<Image>();
     }
 
 
@@ -28,6 +30,8 @@ public class SkillButton : MonoBehaviour {
         {
             coolDownImage.fillAmount = 0.0f;
             used = false;
+            // reset the GameObject containing the image
+            coolDownObject.SetActive(false);
         }
 
     }
@@ -44,6 +48,7 @@ public class SkillButton : MonoBehaviour {
         Stats.GetInstance().TakeMana(2);
 
         // reset the image
+        coolDownObject.SetActive(true);
         coolDownImage.fillAmount = 1.0f;
         used = true;
     }

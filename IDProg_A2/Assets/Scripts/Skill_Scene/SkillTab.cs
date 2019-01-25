@@ -6,6 +6,8 @@ using UnityEngine.UI; // required when using UI elements in scripts
 public class SkillTab : MonoBehaviour {
 
     public Image myImage;
+    public Image myButton;
+
     public Button centre;
    //public Button up;
    //public Button right;
@@ -32,7 +34,8 @@ public class SkillTab : MonoBehaviour {
    //public Button bottomWRight;
    //public Button bottomWLeft;
 
-    public List<Button> Buttons;
+   public List<Button> Buttons;
+   public Button CurrentButton;
 
     // Use this for initialization
     void Start ()
@@ -64,6 +67,7 @@ public class SkillTab : MonoBehaviour {
         //Buttons.Add(bottomWLeft);
 
         myImage.enabled = false;
+        myButton.enabled = false;
     }
 
     // Update is called once per frame
@@ -73,43 +77,26 @@ public class SkillTab : MonoBehaviour {
         {
             if (Buttons[i].GetComponent<ButtonHandlerOrigin>() != null)
             {
-                if (Buttons[i].GetComponent<ButtonHandlerOrigin>().GetSelected() == true)
+                if (Buttons[i].GetComponent<ButtonHandlerOrigin>().GetSendSelected() == true)
                 {
-                    myImage.enabled = true;
+                    CurrentButton = Buttons[i];
+                    ToggleMenu();
                 }
             }
         }
 
-        //for (int i = 0; i < Buttons.Count; ++i)
-        //{
-        //    if (Buttons[i].GetComponent<ButtonHandlerOrigin>() != null)
-        //    {
-        //        if (Buttons[i].GetComponent<ButtonHandlerOrigin>().GetSelected() == true)
-        //        {
-        //            myImage.enabled = false;
-        //        }
-        //    }
-        //    else if (Buttons[i].GetComponent<ButtonHandlerSolo>() != null)
-        //    {
-        //        if (Buttons[i].GetComponent<ButtonHandlerSolo>().GetSelected() == true)
-        //        {
-        //
-        //        }
-        //    }
-        //    else if (Buttons[i].GetComponent<ButtonHandlerDuo>() != null)
-        //    {
-        //        if (Buttons[i].GetComponent<ButtonHandlerDuo>().GetSelected() == true)
-        //        {
-        //
-        //        }
-        //    }
-        //    else if (Buttons[i].GetComponent<ButtonHandlerTrio>() != null)
-        //    {
-        //        if (Buttons[i].GetComponent<ButtonHandlerTrio>().GetSelected() == true)
-        //        {
-        //
-        //        }
-        //    }
-        //}
+        if (myButton.GetComponent<AddSkillButton>().GetSendClick() == true)
+        {
+            CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
+            myButton.GetComponent<AddSkillButton>().SetAdded(!myButton.GetComponent<AddSkillButton>().GetAdded());
+            myButton.GetComponent<AddSkillButton>().SetSendClick(false);
+        }
 	}
+
+    void ToggleMenu()
+    {
+        CurrentButton.GetComponent<ButtonHandlerOrigin>().SetSendSelected(false);
+        myImage.enabled = !myImage.enabled;
+        myButton.enabled = !myButton.enabled;
+    }
 }

@@ -17,6 +17,7 @@ public class ButtonHandlerOrigin : MonoBehaviour
 
     bool Active;
     bool Selected;
+    bool Send;
 
     // Use this for initialization
     void Start()
@@ -26,6 +27,16 @@ public class ButtonHandlerOrigin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void SetSendSelected(bool Input)
+    {
+        Send = Input;
+    }
+
+    public bool GetSendSelected()
+    {
+        return Send;
     }
 
     public void SetSelected(bool Input)
@@ -38,12 +49,12 @@ public class ButtonHandlerOrigin : MonoBehaviour
         return Selected;
     }
 
-    public void SetAllAdjacentButtonActive()
+    public void SetAllAdjacentButtonActive(bool Input)
     {
-        ButtonUp.interactable = true;
-        ButtonBottom.interactable = true;
-        ButtonRight.interactable = true;
-        ButtonLeft.interactable = true;
+        ButtonUp.interactable = Input;
+        ButtonBottom.interactable = Input;
+        ButtonRight.interactable = Input;
+        ButtonLeft.interactable = Input;
     }
 
     public void ToggleActive()

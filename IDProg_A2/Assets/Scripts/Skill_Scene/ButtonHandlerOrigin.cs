@@ -16,6 +16,7 @@ public class ButtonHandlerOrigin : MonoBehaviour
     public Sprite InactiveSprite;
 
     bool Active;
+    bool Selected;
 
     // Use this for initialization
     void Start()
@@ -27,12 +28,22 @@ public class ButtonHandlerOrigin : MonoBehaviour
     {
     }
 
+    public void SetSelected(bool Input)
+    {
+        Selected = Input;
+    }
+
+    public bool GetSelected()
+    {
+        return Selected;
+    }
+
     public void SetAllAdjacentButtonActive()
     {
         ButtonUp.interactable = true;
         ButtonBottom.interactable = true;
         ButtonRight.interactable = true;
-        ButtonLeft.interactable = true;       
+        ButtonLeft.interactable = true;
     }
 
     public void ToggleActive()

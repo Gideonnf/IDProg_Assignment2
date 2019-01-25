@@ -12,6 +12,7 @@ public class ButtonHandlerSolo : MonoBehaviour {
     public Sprite InactiveSprite;
 
     public bool Active;
+    bool Selected;
 
     // Use this for initialization
     void Start()
@@ -32,6 +33,16 @@ public class ButtonHandlerSolo : MonoBehaviour {
             myButton.interactable = false;
             SetActive(false);
         }
+    }
+
+    public void SetSelected(bool Input)
+    {
+        Selected = Input;
+    }
+
+    public bool GetSelected()
+    {
+        return Selected;
     }
 
     public void ToggleActive()

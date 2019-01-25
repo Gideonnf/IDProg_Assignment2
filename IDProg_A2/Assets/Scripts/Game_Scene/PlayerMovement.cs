@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    // MiniMap
+    [SerializeField]
+    private RectTransform miniMapTransform;
     // Static Instance
     private static PlayerMovement m_Instance;
     public static PlayerMovement GetInstance()
@@ -25,14 +28,28 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        // Update own position
         currentTransform.position += (vel * Time.deltaTime);
 
-	}
+        // Update minimap position
+        UpdateMiniMap();
+    }
 
 
     public void JoyStickInput(float xDelta, float yDelta)
     {
         vel.x = xDelta;
         vel.y = yDelta;
+    }
+
+
+    private void UpdateMiniMap()
+    {
+        // get the vel and reverse it, as the axis is reverted
+        Vector2 mapVel = vel * 0.7f;
+        mapVel.x *= 0.5f;
+        mapVel = -mapVel;
+        // translate it 
+        miniMapTransform.anchoredPosition += (mapVel * Time.deltaTime);
     }
 }

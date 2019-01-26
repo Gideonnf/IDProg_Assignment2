@@ -55,20 +55,19 @@ public class TouchManager : MonoBehaviour {
 
     }
 
-    private void OnCollisionEnter2D(GameObject collision)
-    {
-        if (collision.name == "Left")
-        {
+    //private void OnCollisionEnter2D(GameObject collision)
+    //{
+    //    {
 
-        }
-        else if (collision.name == "Right")
-        {
+    //    }
+    //    else if (collision.name == "Right")
+    //    {
 
-        }
-        else if (collision.name == "Down")
-        {
+    //    }
+    //    else if (collision.name == "Down")
+    //    {
 
-        }
-    }
+    //    }
+    //}
 
 }

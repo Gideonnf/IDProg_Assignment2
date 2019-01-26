@@ -37,14 +37,15 @@ public class ChangeScreens : MonoBehaviour {
         if (Swipe.GetInstance().GetSwipeUp())
         {
             // NO active PopUps, so go to GameScene
-            // Activate FAKE GameScreen
-            screens[2].SetActive(true);
+            //// Activate FAKE GameScreen
+            //screens[2].SetActive(true);
 
-            float slideUpTime = 0.4f;
-            // DOTween the screens up
-            GameObject.Find("MapStuff").GetComponent<RectTransform>().DOAnchorPosY(1682.0f, slideUpTime, true);
-            // Start Timer to Change Scene
-            GetComponent<GoToNewScene>().GoToNewScene_STRING_Timer("Game_Scene", slideUpTime);
+            //float slideUpTime = 0.4f;
+            //// DOTween the screens up
+            //GameObject.Find("MapStuff").GetComponent<RectTransform>().DOAnchorPosY(1682.0f, slideUpTime, true);
+            //// Start Timer to Change Scene
+            //GetComponent<GoToNewScene>().GoToNewScene_STRING_Timer("Game_Scene", slideUpTime);
+            GoToFakeGameScene();
         }
 
 
@@ -63,6 +64,19 @@ public class ChangeScreens : MonoBehaviour {
         currentScreenIndex = GetOtherIndex();
         // Activate current Screen
         screens[currentScreenIndex].SetActive(true);
+    }
+    // Called by other classes to change
+    // to GameScene
+    public void GoToFakeGameScene()
+    {
+        // Activate FAKE GameScreen
+        screens[2].SetActive(true);
+
+        float slideUpTime = 0.4f;
+        // DOTween the screens up
+        GameObject.Find("MapStuff").GetComponent<RectTransform>().DOAnchorPosY(1682.0f, slideUpTime, true);
+        // Start Timer to Change Scene
+        GetComponent<GoToNewScene>().GoToNewScene_STRING_Timer("Game_Scene", slideUpTime);
     }
 
 

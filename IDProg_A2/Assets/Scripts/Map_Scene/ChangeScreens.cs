@@ -71,6 +71,7 @@ public class ChangeScreens : MonoBehaviour {
     {
         // Activate FAKE GameScreen
         screens[2].SetActive(true);
+        screens[3].SetActive(true);
 
         float slideUpTime = 0.4f;
         // DOTween the screens up

@@ -81,4 +81,9 @@ public class ButtonHandlerSolo : MonoBehaviour {
     {
         return Active;
     }
+
+    public Sprite GetSprite()
+    {
+        return ActiveSprite;
+    }
 }

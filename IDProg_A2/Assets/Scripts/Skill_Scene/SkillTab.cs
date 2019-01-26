@@ -7,6 +7,7 @@ public class SkillTab : MonoBehaviour {
 
     public Image myImage;
     public Image myButton;
+    public Image mySkillImage;
 
     public Button centre;
     public Button up;
@@ -68,6 +69,7 @@ public class SkillTab : MonoBehaviour {
 
         myImage.enabled = false;
         myButton.enabled = false;
+        mySkillImage.enabled = false;
     }
 
     // Update is called once per frame
@@ -81,6 +83,7 @@ public class SkillTab : MonoBehaviour {
                 {
                     CurrentButton = Buttons[i];
                     ToggleMenu();
+                    mySkillImage.sprite = Buttons[i].GetComponent<ButtonHandlerOrigin>().GetSprite();
                 }
             }
             else if (Buttons[i].GetComponent<ButtonHandlerSolo>() != null)
@@ -89,6 +92,7 @@ public class SkillTab : MonoBehaviour {
                 {
                     CurrentButton = Buttons[i];
                     ToggleMenu();
+                    mySkillImage.sprite = Buttons[i].GetComponent<ButtonHandlerSolo>().GetSprite();
                 }
             }
             else if (Buttons[i].GetComponent<ButtonHandlerDuo>() != null)
@@ -97,6 +101,7 @@ public class SkillTab : MonoBehaviour {
                 {
                     CurrentButton = Buttons[i];
                     ToggleMenu();
+                    mySkillImage.sprite = Buttons[i].GetComponent<ButtonHandlerDuo>().GetSprite();
                 }
             }
             else if (Buttons[i].GetComponent<ButtonHandlerTrio>() != null)
@@ -105,6 +110,7 @@ public class SkillTab : MonoBehaviour {
                 {
                     CurrentButton = Buttons[i];
                     ToggleMenu();
+                    mySkillImage.sprite = Buttons[i].GetComponent<ButtonHandlerTrio>().GetSprite();
                 }
             }
         }
@@ -160,5 +166,6 @@ public class SkillTab : MonoBehaviour {
         }
         myImage.enabled = !myImage.enabled;
         myButton.enabled = !myButton.enabled;
+        mySkillImage.enabled = !mySkillImage.enabled;
     }
 }

@@ -1590,7 +1590,7 @@ GameObject:
   - component: {fileID: 468244124}
   m_Layer: 5
   m_Name: Charisma
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3463,7 +3463,7 @@ GameObject:
   - component: {fileID: 951717551}
   m_Layer: 5
   m_Name: Strength
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3576,7 +3576,7 @@ GameObject:
   - component: {fileID: 973154046}
   m_Layer: 5
   m_Name: Wisdom
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4768,8 +4768,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1164068494}
-        m_MethodName: ConfirmStats
+      - m_Target: {fileID: 1448899083}
+        m_MethodName: UpdateStats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5149,7 +5149,7 @@ GameObject:
   - component: {fileID: 1250672748}
   m_Layer: 5
   m_Name: Dexterity
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5554,7 +5554,7 @@ GameObject:
   - component: {fileID: 1394033860}
   m_Layer: 5
   m_Name: Intelligence
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7255,7 +7255,7 @@ GameObject:
   - component: {fileID: 1874140020}
   m_Layer: 5
   m_Name: Constitution
-  m_TagString: Untagged
+  m_TagString: EditableUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

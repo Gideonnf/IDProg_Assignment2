@@ -13,6 +13,7 @@ public class ButtonHandlerSolo : MonoBehaviour {
 
     public bool Active;
     bool Selected;
+    bool send;
 
     // Use this for initialization
     void Start()
@@ -33,6 +34,16 @@ public class ButtonHandlerSolo : MonoBehaviour {
             myButton.interactable = false;
             SetActive(false);
         }
+    }
+
+    public void SetSendSelected(bool Input)
+    {
+        send = Input;
+    }
+
+    public bool GetSendSelected()
+    {
+        return send;
     }
 
     public void SetSelected(bool Input)

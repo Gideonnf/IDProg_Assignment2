@@ -14,6 +14,7 @@ public class ButtonHandlerDuo : MonoBehaviour {
 
     bool Active;
     bool Selected;
+    bool send;
 
     // Use this for initialization
     void Start()
@@ -35,6 +36,16 @@ public class ButtonHandlerDuo : MonoBehaviour {
         {
             myButton.interactable = true;
         }
+    }
+
+    public void SetSendSelected(bool Input)
+    {
+        send = Input;
+    }
+
+    public bool GetSendSelected()
+    {
+        return send;
     }
 
     public void SetSelected(bool Input)

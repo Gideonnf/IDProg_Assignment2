@@ -17,6 +17,7 @@ public class ButtonHandlerTrio : MonoBehaviour {
 
     bool Active;
     bool Selected;
+    bool send;
 
     // Use this for initialization
     void Start()
@@ -52,6 +53,16 @@ public class ButtonHandlerTrio : MonoBehaviour {
                 SetActive(false);
             }
         }    
+    }
+
+    public void SetSendSelected(bool Input)
+    {
+        send = Input;
+    }
+
+    public bool GetSendSelected()
+    {
+        return send;
     }
 
     public void SetSelected(bool Input)

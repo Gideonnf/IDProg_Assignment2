@@ -8,6 +8,8 @@ public class SkillTab : MonoBehaviour {
     public Image myImage;
     public Image myButton;
     public Image mySkillImage;
+    public Text mySkillName;
+    public Text mySkillDescription;
 
     public Button centre;
     public Button up;
@@ -70,6 +72,8 @@ public class SkillTab : MonoBehaviour {
         myImage.enabled = false;
         myButton.enabled = false;
         mySkillImage.enabled = false;
+        mySkillName.enabled = false;
+        mySkillDescription.enabled = false;
     }
 
     // Update is called once per frame
@@ -167,5 +171,7 @@ public class SkillTab : MonoBehaviour {
         myImage.enabled = !myImage.enabled;
         myButton.enabled = !myButton.enabled;
         mySkillImage.enabled = !mySkillImage.enabled;
+        mySkillName.enabled = !mySkillName.enabled;
+        mySkillDescription.enabled = !mySkillDescription.enabled;
     }
 }

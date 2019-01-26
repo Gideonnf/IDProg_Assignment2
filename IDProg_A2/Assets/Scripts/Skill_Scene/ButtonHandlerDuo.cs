@@ -84,8 +84,13 @@ public class ButtonHandlerDuo : MonoBehaviour {
         return Active;
     }
 
-    public Sprite GetSprite()
+    public Sprite GetSpriteActive()
     {
         return ActiveSprite;
+    }
+
+    public Sprite GetSpriteInactive()
+    {
+        return InactiveSprite;
     }
 }

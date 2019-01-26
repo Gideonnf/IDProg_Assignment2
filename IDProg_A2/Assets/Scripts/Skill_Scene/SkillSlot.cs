@@ -10,6 +10,7 @@ public class SkillSlot : MonoBehaviour {
     public Sprite ImageUnselected;
 
     bool Selected;
+    bool Active;
     bool send;
 
 	// Use this for initialization
@@ -35,15 +36,19 @@ public class SkillSlot : MonoBehaviour {
     public void SetSelected(bool Input)
     {
         Selected = Input;
+        SetImage();
+    }
 
+    public bool GetActive()
+    {
+        return Active;
+    }
+
+    public void SetImage()
+    {
         if (Selected == true)
             myButton.GetComponent<Image>().sprite = ImageSelected;
         else
             myButton.GetComponent<Image>().sprite = ImageUnselected;
-    }
-
-    public bool GetSelected()
-    {
-        return Selected;
     }
 }

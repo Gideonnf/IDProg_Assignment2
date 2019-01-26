@@ -20,7 +20,16 @@ public class SkillTab : MonoBehaviour {
     public Image SkillSlotRight;
     public List<Image> SkillSlots;
     Image CurrentSkillSlot;
- 
+
+    int CurrentSlotNumber;
+
+    public Image SkillIconLeft;
+    public Image SkillIconCentre;
+    public Image SkillIconRight;
+    public List<Image> SkillIcons;
+
+    public Sprite EmptySkillIcon;
+
     public Button centre;
     public Button up;
     public Button right;
@@ -49,6 +58,7 @@ public class SkillTab : MonoBehaviour {
 
    public List<Button> Buttons;
    Button CurrentButton;
+   int CurrentButtonNumber;
 
     // Use this for initialization
     void Start ()
@@ -83,8 +93,13 @@ public class SkillTab : MonoBehaviour {
         SkillSlots.Add(SkillSlotCentre);
         SkillSlots.Add(SkillSlotRight);
 
+        SkillIcons.Add(SkillIconLeft);
+        SkillIcons.Add(SkillIconRight);
+        SkillIcons.Add(SkillIconCentre);
+
         SkillSlotLeft.GetComponent<SkillSlot>().SetSelected(true);
         CurrentSkillSlot = SkillSlotLeft;
+        CurrentSlotNumber = 0;
 
         myImage.enabled = false;
         myButton.enabled = false;
@@ -98,6 +113,9 @@ public class SkillTab : MonoBehaviour {
         SkillSlotLeft.enabled = false;
         SkillSlotCentre.enabled = false;
         SkillSlotRight.enabled = false;
+        SkillIconLeft.enabled = false;
+        SkillIconRight.enabled = false;
+        SkillIconCentre.enabled = false;
 
     }
 
@@ -151,39 +169,104 @@ public class SkillTab : MonoBehaviour {
             if (SkillSlots[i].GetComponent<SkillSlot>().GetSendSelected() == true)
             {
                 CurrentSkillSlot = SkillSlots[i];
+                if (i == 0)
+                    CurrentSlotNumber = i;
+                else if (i == 1)
+                    CurrentSlotNumber = 2;
+                else if (i == 2)
+                    CurrentSlotNumber = 1;
+
                 SetSelected();
                 SkillSlots[i].GetComponent<SkillSlot>().SetSendSelected(false);
             }
         }
+
+        //for (int i = 0; i < SkillIcons.Count; ++i)
+        //{
+        //    if (CurrentButton.GetComponent<ButtonHandlerSolo>() != null)
+        //    {
+        //        if (SkillIcons[i].sprite == CurrentButton.GetComponent<ButtonHandlerSolo>().GetSpriteInactive() && SkillIcons[i] != SkillIcons[CurrentSlotNumber])
+        //        {
+        //            myButton.GetComponent<AddSkillButton>().SetState(2);
+        //        }
+        //    }
+        //    else if (CurrentButton.GetComponent<ButtonHandlerDuo>() != null)
+        //    {
+        //        if (SkillIcons[i].sprite == CurrentButton.GetComponent<ButtonHandlerDuo>().GetSpriteInactive() && SkillIcons[i] != SkillIcons[CurrentSlotNumber])
+        //        {
+        //            myButton.GetComponent<AddSkillButton>().SetState(2);
+        //        }
+        //    }
+        //    else if (CurrentButton.GetComponent<ButtonHandlerTrio>() != null)
+        //    {
+        //        if (SkillIcons[i].sprite == CurrentButton.GetComponent<ButtonHandlerTrio>().GetSpriteInactive() && SkillIcons[i] != SkillIcons[CurrentSlotNumber])
+        //        {
+        //            myButton.GetComponent<AddSkillButton>().SetState(2);
+        //        }
+        //    }
+        //}
 
         //Handles add skill button
         if (myButton.GetComponent<AddSkillButton>().GetSendClick() == true)
         {
             if (CurrentButton.GetComponent<ButtonHandlerOrigin>() != null)
             {
-                CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
-                myButton.GetComponent<AddSkillButton>().SetAdded(CurrentButton.GetComponent<ButtonHandlerOrigin>().GetActive());
+                if (CurrentButton.GetComponent<ButtonHandlerOrigin>().GetActive() == true)
+                {
+                    CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
+                    myButton.GetComponent<AddSkillButton>().SetState(1);
+                }
+                else if (CurrentButton.GetComponent<ButtonHandlerOrigin>().GetActive() == false)
+                {
+                    CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
+                    myButton.GetComponent<AddSkillButton>().SetState(0);
+                }              
             }
             else if (CurrentButton.GetComponent<ButtonHandlerSolo>() != null)
             {
-                CurrentButton.GetComponent<ButtonHandlerSolo>().ToggleActive();
-                myButton.GetComponent<AddSkillButton>().SetAdded(CurrentButton.GetComponent<ButtonHandlerSolo>().GetActive());
+                ChangeSkillIcon(0);
 
-                //CurrentSkillSlot.sprite = CurrentButton.GetComponent<ButtonHandlerSolo>().GetSpriteInactive();
+                if (CurrentButton.GetComponent<ButtonHandlerSolo>().GetActive() == true)
+                {
+                    CurrentButton.GetComponent<ButtonHandlerSolo>().ToggleActive();
+                    myButton.GetComponent<AddSkillButton>().SetState(1);
+                }
+                else if (CurrentButton.GetComponent<ButtonHandlerSolo>().GetActive() == false)
+                {
+                    CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
+                    myButton.GetComponent<AddSkillButton>().SetState(0);
+                }
             }
             else if (CurrentButton.GetComponent<ButtonHandlerDuo>() != null)
             {
-                CurrentButton.GetComponent<ButtonHandlerDuo>().ToggleActive();
-                myButton.GetComponent<AddSkillButton>().SetAdded(CurrentButton.GetComponent<ButtonHandlerDuo>().GetActive());
+                ChangeSkillIcon(1);
 
-                //CurrentSkillSlot.sprite = CurrentButton.GetComponent<ButtonHandlerDuo>().GetSpriteInactive();
+                if (CurrentButton.GetComponent<ButtonHandlerDuo>().GetActive() == true)
+                {
+                    CurrentButton.GetComponent<ButtonHandlerDuo>().ToggleActive();
+                    myButton.GetComponent<AddSkillButton>().SetState(1);
+                }
+                else if (CurrentButton.GetComponent<ButtonHandlerDuo>().GetActive() == false)
+                {
+                    CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
+                    myButton.GetComponent<AddSkillButton>().SetState(0);
+                }
             }
             else if (CurrentButton.GetComponent<ButtonHandlerTrio>() != null)
             {
+                ChangeSkillIcon(2);
                 CurrentButton.GetComponent<ButtonHandlerTrio>().ToggleActive();
-                myButton.GetComponent<AddSkillButton>().SetAdded(CurrentButton.GetComponent<ButtonHandlerTrio>().GetActive());
 
-               // CurrentSkillSlot.sprite = CurrentButton.GetComponent<ButtonHandlerTrio>().GetSpriteInactive();
+                if (CurrentButton.GetComponent<ButtonHandlerTrio>().GetActive() == true)
+                {
+                    CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
+                    myButton.GetComponent<AddSkillButton>().SetState(1);
+                }
+                else if (CurrentButton.GetComponent<ButtonHandlerTrio>().GetActive() == false)
+                {
+                    CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
+                    myButton.GetComponent<AddSkillButton>().SetState(0);
+                }
             }
 
             myButton.GetComponent<AddSkillButton>().SetSendClick(false);
@@ -195,22 +278,55 @@ public class SkillTab : MonoBehaviour {
         if (CurrentButton.GetComponent<ButtonHandlerOrigin>() != null)
         {
             CurrentButton.GetComponent<ButtonHandlerOrigin>().SetSendSelected(false);
-            myButton.GetComponent<AddSkillButton>().SetAdded(CurrentButton.GetComponent<ButtonHandlerOrigin>().GetActive());
+
+            if (CurrentButton.GetComponent<ButtonHandlerOrigin>().GetActive() == true)
+            {
+                myButton.GetComponent<AddSkillButton>().SetState(1);
+            }
+            else if (CurrentButton.GetComponent<ButtonHandlerOrigin>().GetActive() == false)
+            {
+                myButton.GetComponent<AddSkillButton>().SetState(0);
+            }
+           
         }
         else if (CurrentButton.GetComponent<ButtonHandlerSolo>() != null)
         {
             CurrentButton.GetComponent<ButtonHandlerSolo>().SetSendSelected(false);
-            myButton.GetComponent<AddSkillButton>().SetAdded(CurrentButton.GetComponent<ButtonHandlerSolo>().GetActive());
+
+            if (CurrentButton.GetComponent<ButtonHandlerSolo>().GetActive() == true)
+            {
+                myButton.GetComponent<AddSkillButton>().SetState(1);
+            }
+            else if (CurrentButton.GetComponent<ButtonHandlerSolo>().GetActive() == false)
+            {
+                myButton.GetComponent<AddSkillButton>().SetState(0);
+            }
         }
         else if (CurrentButton.GetComponent<ButtonHandlerDuo>() != null)
         {
             CurrentButton.GetComponent<ButtonHandlerDuo>().SetSendSelected(false);
-            myButton.GetComponent<AddSkillButton>().SetAdded(CurrentButton.GetComponent<ButtonHandlerDuo>().GetActive());
+
+            if (CurrentButton.GetComponent<ButtonHandlerDuo>().GetActive() == true)
+            {
+                myButton.GetComponent<AddSkillButton>().SetState(1);
+            }
+            else if (CurrentButton.GetComponent<ButtonHandlerDuo>().GetActive() == false)
+            {
+                myButton.GetComponent<AddSkillButton>().SetState(0);
+            }
         }
         else if (CurrentButton.GetComponent<ButtonHandlerTrio>() != null)
         {
             CurrentButton.GetComponent<ButtonHandlerTrio>().SetSendSelected(false);
-            myButton.GetComponent<AddSkillButton>().SetAdded(CurrentButton.GetComponent<ButtonHandlerTrio>().GetActive());
+
+            if (CurrentButton.GetComponent<ButtonHandlerTrio>().GetActive() == true)
+            {
+                myButton.GetComponent<AddSkillButton>().SetState(1);
+            }
+            else if (CurrentButton.GetComponent<ButtonHandlerTrio>().GetActive() == false)
+            {
+                myButton.GetComponent<AddSkillButton>().SetState(0);
+            }
         }
         myImage.enabled = !myImage.enabled;
         myButton.enabled = !myButton.enabled;
@@ -223,7 +339,10 @@ public class SkillTab : MonoBehaviour {
         PrevSkillSlots.enabled = !PrevSkillSlots.enabled;
         SkillSlotLeft.enabled = !SkillSlotLeft.enabled;
         SkillSlotCentre.enabled = !SkillSlotCentre.enabled;
-        SkillSlotRight.enabled = !SkillSlotRight.enabled; 
+        SkillSlotRight.enabled = !SkillSlotRight.enabled;
+        SkillIconLeft.enabled = !SkillIconLeft.enabled;
+        SkillIconRight.enabled = !SkillIconRight.enabled;
+        SkillIconCentre.enabled = !SkillIconCentre.enabled;
     }
 
     public void SetSelected()
@@ -233,5 +352,36 @@ public class SkillTab : MonoBehaviour {
             SkillSlots[i].GetComponent<SkillSlot>().SetSelected(false);
         }
         CurrentSkillSlot.GetComponent<SkillSlot>().SetSelected(true);
+    }
+
+    void ChangeSkillIcon(int Case)
+    {
+        switch (Case)
+        {
+            case 0:
+                for (int i = 0; i < SkillIcons.Count; ++i)
+                {
+                    if (SkillIcons[i].sprite == CurrentButton.GetComponent<ButtonHandlerSolo>().GetSpriteInactive())
+                        SkillIcons[i].sprite = EmptySkillIcon;
+                }
+                SkillIcons[CurrentSlotNumber].sprite = CurrentButton.GetComponent<ButtonHandlerSolo>().GetSpriteInactive();
+                break;
+            case 1:
+                for (int i = 0; i < SkillIcons.Count; ++i)
+                {
+                    if (SkillIcons[i].sprite == CurrentButton.GetComponent<ButtonHandlerDuo>().GetSpriteInactive())
+                        SkillIcons[i].sprite = EmptySkillIcon;
+                }
+                SkillIcons[CurrentSlotNumber].sprite = CurrentButton.GetComponent<ButtonHandlerDuo>().GetSpriteInactive();
+                break;
+            case 2:
+                for (int i = 0; i < SkillIcons.Count; ++i)
+                {
+                    if (SkillIcons[i].sprite == CurrentButton.GetComponent<ButtonHandlerTrio>().GetSpriteInactive())
+                        SkillIcons[i].sprite = EmptySkillIcon;
+                }
+                SkillIcons[CurrentSlotNumber].sprite = CurrentButton.GetComponent<ButtonHandlerTrio>().GetSpriteInactive();
+                break;
+        }
     }
 }

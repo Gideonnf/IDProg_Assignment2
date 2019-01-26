@@ -9,14 +9,15 @@ public class AddSkillButton : MonoBehaviour {
 
     public Sprite Added;
     public Sprite Unadded;
+    public Sprite Move;
 
     bool Click;
-    bool IsAdded;
+    int State;
 
 	// Use this for initialization
 	void Start () {
         Click = false;
-        IsAdded = false;
+        State = 0;
     }
 	
 	// Update is called once per frame
@@ -33,18 +34,20 @@ public class AddSkillButton : MonoBehaviour {
         return Click;
     }
 
-    public void SetAdded(bool Input)
+    public void SetState(int Input)
     {
-        IsAdded = Input;
+        State = Input;
 
-        if (IsAdded == true)
+        if (State == 1)
             myButton.GetComponent<Image>().sprite = Unadded;
-        else
+        else if (State == 0)
             myButton.GetComponent<Image>().sprite = Added;
+        else if (State == 2)
+            myButton.GetComponent<Image>().sprite = Move;
     }
 
-    public bool GetAdded()
+    public int GetAdded()
     {
-        return IsAdded;
+        return State;
     }
 }

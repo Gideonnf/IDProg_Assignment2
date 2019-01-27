@@ -17,10 +17,13 @@ public class Inventory_Manager : MonoBehaviour {
 
     [System.NonSerialized]
     public EquiptmentTypes ActiveEquiptmentType;
+    public bool isChanged;
 
     // An array to hold the number of active slots
 	// Use this for initialization
 	void Start () {
+        ActiveEquiptmentType = EquiptmentTypes.Weapons;
+        isChanged = true;
 	}
 	
 	// Update is called once per frame
@@ -54,6 +57,7 @@ public class Inventory_Manager : MonoBehaviour {
         InventorySlots[i] = temp; // Change the last element to the first one
         Containers[i].GetComponent<TextMeshProUGUI>().text = tempGO;
         ActiveEquiptmentType = InventorySlots[0];
+        isChanged = true;
     }
 
     public void ShiftDown()
@@ -70,5 +74,6 @@ public class Inventory_Manager : MonoBehaviour {
         InventorySlots[i] = temp;
         Containers[i].GetComponent<TextMeshProUGUI>().text = tempGO;
         ActiveEquiptmentType = InventorySlots[0];
+        isChanged = true;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class Display_Manager : MonoBehaviour {
+
     private Attribute_Manager Attribute_Manager;
     private int childCount = 0;
     private GameObject[] Displayed_Attributes;
@@ -79,6 +80,8 @@ public class Display_Manager : MonoBehaviour {
         Description.GetComponent<Image>().sprite = SpriteDescription[(int)stats];
         DescriptionButton.GetComponent<Image>().enabled = true;
         DescriptionButton.GetComponent<Button>().enabled = true;
+
+
         //Doesnt work
         Description.GetComponentInChildren<Button>().enabled = true;
         Description.GetComponentInChildren<Image>().enabled = true;

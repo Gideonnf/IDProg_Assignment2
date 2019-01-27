@@ -96,16 +96,22 @@ public class ItemSelectionHandler : MonoBehaviour {
                 case Inventory_Manager.EquiptmentTypes.Weapons:
                     {
                         ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[i].WeaponName;
+                        ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[i];
+                        ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
                     }
                     break;
                 case Inventory_Manager.EquiptmentTypes.Apparel:
                     {
                         ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[i].WeaponName;
+                        ItemSlots[i].GetComponent<ItemPress>().currentItem = ApparelList[i];
+                        ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
                     }
                     break;
                 default:
                     {
                         ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[i].WeaponName;
+                        ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[i];
+                        ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
                     }
                     break;
             }

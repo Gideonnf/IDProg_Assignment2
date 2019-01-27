@@ -3,7 +3,47 @@ guid: a5f027fb067b05b458728945296fb6d2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - myImage: {instanceID: 0}
+  - myButton: {instanceID: 0}
+  - mySkillImage: {instanceID: 0}
+  - mySkillName: {instanceID: 0}
+  - mySkillDescription: {instanceID: 0}
+  - CurrSkillSlot: {instanceID: 0}
+  - NextSkillSlots: {instanceID: 0}
+  - PrevSkillSlots: {instanceID: 0}
+  - SkillSlotLeft: {instanceID: 0}
+  - SkillSlotCentre: {instanceID: 0}
+  - SkillSlotRight: {instanceID: 0}
+  - SkillIconLeft: {instanceID: 0}
+  - SkillIconCentre: {instanceID: 0}
+  - SkillIconRight: {instanceID: 0}
+  - EmptySkillIcon: {fileID: 21300000, guid: 781a5412e9b3bd74196dc66ab41ce2b4, type: 3}
+  - centre: {instanceID: 0}
+  - up: {instanceID: 0}
+  - right: {instanceID: 0}
+  - left: {instanceID: 0}
+  - bottom: {instanceID: 0}
+  - upRight: {instanceID: 0}
+  - upLeft: {instanceID: 0}
+  - bottomRight: {instanceID: 0}
+  - bottomLeft: {instanceID: 0}
+  - upWCentre: {instanceID: 0}
+  - upWRight: {instanceID: 0}
+  - upWLeft: {instanceID: 0}
+  - upWUp: {instanceID: 0}
+  - rightWCentre: {instanceID: 0}
+  - rightWUp: {instanceID: 0}
+  - rightWBottom: {instanceID: 0}
+  - rightWRight: {instanceID: 0}
+  - leftWCentre: {instanceID: 0}
+  - leftWLeft: {instanceID: 0}
+  - leftWUp: {instanceID: 0}
+  - leftWBottom: {instanceID: 0}
+  - bottomWCentre: {instanceID: 0}
+  - bottomWBottom: {instanceID: 0}
+  - bottomWRight: {instanceID: 0}
+  - bottomWLeft: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

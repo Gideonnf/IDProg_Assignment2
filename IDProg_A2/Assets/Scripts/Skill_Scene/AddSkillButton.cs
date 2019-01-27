@@ -46,7 +46,7 @@ public class AddSkillButton : MonoBehaviour {
             myButton.GetComponent<Image>().sprite = Move;
     }
 
-    public int GetAdded()
+    public int GetState()
     {
         return State;
     }

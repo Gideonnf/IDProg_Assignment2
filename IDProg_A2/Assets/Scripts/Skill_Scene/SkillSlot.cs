@@ -39,10 +39,10 @@ public class SkillSlot : MonoBehaviour {
         SetImage();
     }
 
-    public bool GetActive()
-    {
-        return Active;
-    }
+    //public bool GetActive()
+    //{
+    //    return Active;
+    //}
 
     public void SetImage()
     {

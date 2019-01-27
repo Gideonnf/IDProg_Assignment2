@@ -21,6 +21,18 @@ public class SkillTab : MonoBehaviour {
     public List<Image> SkillSlots;
     Image CurrentSkillSlot;
 
+    Image SkillSlot1;
+    Image SkillSlot2;
+    Image SkillSlot3;
+    Image SkillSlot4;
+    Image SkillSlot5;
+    Image SkillSlot6;
+    Image SkillSlot7;
+    Image SkillSlot8;
+    Image SkillSlot9;
+    public List<Image> SkillSlotsTotal;
+    int CurrentSkillPage;
+
     int CurrentSlotNumber;
 
     public Image SkillIconLeft;
@@ -29,6 +41,14 @@ public class SkillTab : MonoBehaviour {
     public List<Image> SkillIcons;
 
     public Sprite EmptySkillIcon;
+
+    public Sprite CurrPage1;
+    public Sprite CurrPage2;
+    public Sprite CurrPage3;
+    public Sprite NextPage2;
+    public Sprite NextPage3;
+    public Sprite PrevPage1;
+    public Sprite PrevPage2;
 
     public Button centre;
     public Button up;
@@ -93,6 +113,16 @@ public class SkillTab : MonoBehaviour {
         SkillSlots.Add(SkillSlotCentre);
         SkillSlots.Add(SkillSlotRight);
 
+        SkillSlotsTotal.Add(SkillSlot1);
+        SkillSlotsTotal.Add(SkillSlot2);
+        SkillSlotsTotal.Add(SkillSlot3);
+        SkillSlotsTotal.Add(SkillSlot4);
+        SkillSlotsTotal.Add(SkillSlot5);
+        SkillSlotsTotal.Add(SkillSlot6);
+        SkillSlotsTotal.Add(SkillSlot7);
+        SkillSlotsTotal.Add(SkillSlot8);
+        SkillSlotsTotal.Add(SkillSlot9);
+
         SkillIcons.Add(SkillIconLeft);
         SkillIcons.Add(SkillIconRight);
         SkillIcons.Add(SkillIconCentre);
@@ -117,11 +147,53 @@ public class SkillTab : MonoBehaviour {
         SkillIconRight.enabled = false;
         SkillIconCentre.enabled = false;
 
+        CurrentSkillPage = 2;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (NextSkillSlots.GetComponent<SkillPage>().GetSendNext())
+        {
+            ++CurrentSkillPage;
+
+            NextSkillSlots.GetComponent<SkillPage>().SendNextPage(false);
+
+            if (CurrentSkillPage == 2)
+            {
+                PrevSkillSlots.enabled = true;
+                PrevSkillSlots.sprite = PrevPage1;
+                CurrSkillSlot.sprite = CurrPage2;
+                NextSkillSlots.sprite = NextPage3;
+            }
+            else if (CurrentSkillPage == 3)
+            {
+                PrevSkillSlots.sprite = PrevPage2;
+                CurrSkillSlot.sprite = CurrPage3;
+                NextSkillSlots.enabled = false;
+            }
+        }
+        else if (PrevSkillSlots.GetComponent<SkillPage>().GetSendPrev())
+        {
+            --CurrentSkillPage;
+
+            PrevSkillSlots.GetComponent<SkillPage>().SendPrevPage(false);
+
+            if (CurrentSkillPage == 1)
+            {
+                PrevSkillSlots.enabled = false;
+                CurrSkillSlot.sprite = CurrPage1;
+                NextSkillSlots.sprite = NextPage2;
+            }
+            else if (CurrentSkillPage == 2)
+            {
+                NextSkillSlots.enabled = true;
+                PrevSkillSlots.sprite = PrevPage1;
+                CurrSkillSlot.sprite = CurrPage2;
+                NextSkillSlots.sprite = NextPage3;
+            }
+        }
         //Handles open and close of skill tab menu
         for (int i = 0; i < Buttons.Count; ++i)
         {
@@ -266,6 +338,7 @@ public class SkillTab : MonoBehaviour {
             myButton.GetComponent<AddSkillButton>().SetSendClick(false);
         }
 
+        //Handles some skill switching
         for (int i = 0; i < Buttons.Count; ++i)
         {
          if (Buttons[i].GetComponent<ButtonHandlerSolo>() != null)
@@ -308,7 +381,6 @@ public class SkillTab : MonoBehaviour {
                 }
             }
         }
-
     }
 
     void ToggleMenu()

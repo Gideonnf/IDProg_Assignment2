@@ -612,6 +612,7 @@ GameObject:
   - component: {fileID: 107874754}
   - component: {fileID: 107874753}
   - component: {fileID: 107874752}
+  - component: {fileID: 107874755}
   m_Layer: 5
   m_Name: Button Next Skill Slot
   m_TagString: Untagged
@@ -675,7 +676,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 107874753}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 107874755}
+        m_MethodName: SendNextPage
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &107874753
@@ -712,6 +724,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 107874750}
   m_CullTransparentMesh: 0
+--- !u!114 &107874755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 107874750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35c922b17b12d140bc4647d565439ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myButton: {fileID: 107874752}
 --- !u!1 &120079852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,6 +1534,7 @@ GameObject:
   - component: {fileID: 296231718}
   - component: {fileID: 296231717}
   - component: {fileID: 296231716}
+  - component: {fileID: 296231719}
   m_Layer: 5
   m_Name: Button Previous Skill Slot
   m_TagString: Untagged
@@ -1573,7 +1598,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 296231717}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 296231719}
+        m_MethodName: SendPrevPage
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &296231717
@@ -1610,6 +1646,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 296231714}
   m_CullTransparentMesh: 0
+--- !u!114 &296231719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 296231714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35c922b17b12d140bc4647d565439ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myButton: {fileID: 296231716}
 --- !u!1 &319949176
 GameObject:
   m_ObjectHideFlags: 0
@@ -3023,11 +3071,19 @@ MonoBehaviour:
   SkillSlotCentre: {fileID: 1901038843}
   SkillSlotRight: {fileID: 443219944}
   SkillSlots: []
+  SkillSlotsTotal: []
   SkillIconLeft: {fileID: 55931620}
   SkillIconCentre: {fileID: 776729488}
   SkillIconRight: {fileID: 1361388127}
   SkillIcons: []
   EmptySkillIcon: {fileID: 21300000, guid: 781a5412e9b3bd74196dc66ab41ce2b4, type: 3}
+  CurrPage1: {fileID: 0}
+  CurrPage2: {fileID: 0}
+  CurrPage3: {fileID: 0}
+  NextPage2: {fileID: 21300000, guid: c2ab8a2f9c0efd24ebf3885b90c2773a, type: 3}
+  NextPage3: {fileID: 21300000, guid: dc972f37215a8594ab9b4e60b4254ae6, type: 3}
+  PrevPage1: {fileID: 21300000, guid: ce6d8b306d1f90744ad77232da43a080, type: 3}
+  PrevPage2: {fileID: 21300000, guid: fecaecc9c25a6584d9f2462d8ec66675, type: 3}
   centre: {fileID: 1203736189}
   up: {fileID: 513024685}
   right: {fileID: 1635137724}

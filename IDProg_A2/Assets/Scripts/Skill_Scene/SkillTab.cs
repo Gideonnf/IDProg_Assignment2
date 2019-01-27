@@ -405,39 +405,23 @@ public class SkillTab : MonoBehaviour {
 
     void ChangeSkillIcon(int Case)
     {
-        //if (SkillIcons[CurrentSlotNumber].sprite != EmptySkillIcon)
-        //{
-        //    for (int j = 0; j < Buttons.Count; ++j)
-        //    {
-        //        if (Buttons[j] != CurrentButton)
-        //        {
-        //            if (Buttons[j].GetComponent<ButtonHandlerSolo>() != null)
-        //            {
-        //                if (SkillIcons[CurrentSlotNumber].sprite == Buttons[j].GetComponent<ButtonHandlerSolo>().GetSpriteInactive() && Buttons[j] != CurrentButton)
-        //                {
-        //                    Buttons[j].GetComponent<ButtonHandlerSolo>().ToggleActive();
-        //                }
-        //            }
-        //            else if (CurrentButton.GetComponent<ButtonHandlerDuo>() != null)
-        //            {
-        //                if (SkillIcons[CurrentSlotNumber].sprite == Buttons[j].GetComponent<ButtonHandlerDuo>().GetSpriteInactive() && Buttons[j] != CurrentButton)
-        //                {
-        //                    Buttons[j].GetComponent<ButtonHandlerDuo>().ToggleActive();
-        //                }
-        //            }
-        //            else if (CurrentButton.GetComponent<ButtonHandlerTrio>() != null)
-        //            {
-        //                if (Buttons[j].GetComponent<ButtonHandlerTrio>().GetSpriteInactive() == SkillIcons[CurrentSlotNumber].sprite)
-        //                {
-        //                    if (Buttons[j] != CurrentButton)
-        //                    {
-        //                        Buttons[j].GetComponent<ButtonHandlerTrio>().ToggleActive();
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+        if (SkillIcons[CurrentSlotNumber].sprite != EmptySkillIcon)
+        {
+            for (int j = 0; j < Buttons.Count; ++j)
+            {
+                if (Buttons[j] != CurrentButton)
+                {
+                    if (Buttons[j].GetComponent<ButtonHandlerTrio>() != null)
+                    {
+                        if (Buttons[j].GetComponent<ButtonHandlerTrio>().GetSpriteInactive() == SkillIcons[CurrentSlotNumber].sprite)
+                        {
+                           Buttons[j].GetComponent<ButtonHandlerTrio>().ToggleActive();                            
+                        }
+                    }
+                }
+            }
+        }
+
         switch (Case)
         {
             case 0:

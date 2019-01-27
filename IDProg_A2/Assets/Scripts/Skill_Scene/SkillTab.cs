@@ -411,7 +411,21 @@ public class SkillTab : MonoBehaviour {
             {
                 if (Buttons[j] != CurrentButton)
                 {
-                    if (Buttons[j].GetComponent<ButtonHandlerTrio>() != null)
+                    if (Buttons[j].GetComponent<ButtonHandlerSolo>() != null)
+                    {
+                        if (Buttons[j].GetComponent<ButtonHandlerSolo>().GetSpriteInactive() == SkillIcons[CurrentSlotNumber].sprite)
+                        {
+                            Buttons[j].GetComponent<ButtonHandlerSolo>().ToggleActive();
+                        }
+                    }
+                    else if (Buttons[j].GetComponent<ButtonHandlerDuo>() != null)
+                    {
+                        if (Buttons[j].GetComponent<ButtonHandlerDuo>().GetSpriteInactive() == SkillIcons[CurrentSlotNumber].sprite)
+                        {
+                            Buttons[j].GetComponent<ButtonHandlerDuo>().ToggleActive();
+                        }
+                    }
+                    else if (Buttons[j].GetComponent<ButtonHandlerTrio>() != null)
                     {
                         if (Buttons[j].GetComponent<ButtonHandlerTrio>().GetSpriteInactive() == SkillIcons[CurrentSlotNumber].sprite)
                         {

@@ -21,16 +21,16 @@ public class SkillTab : MonoBehaviour {
     public List<Image> SkillSlots;
     Image CurrentSkillSlot;
 
-    Image SkillSlot1;
-    Image SkillSlot2;
-    Image SkillSlot3;
-    Image SkillSlot4;
-    Image SkillSlot5;
-    Image SkillSlot6;
-    Image SkillSlot7;
-    Image SkillSlot8;
-    Image SkillSlot9;
-    public List<Image> SkillSlotsTotal;
+    Sprite SkillSlot1;
+    Sprite SkillSlot2;
+    Sprite SkillSlot3;
+    Sprite SkillSlot4;
+    Sprite SkillSlot5;
+    Sprite SkillSlot6;
+    Sprite SkillSlot7;
+    Sprite SkillSlot8;
+    Sprite SkillSlot9;
+    public List<Sprite> SkillSlotsTotal;
     int CurrentSkillPage;
 
     int CurrentSlotNumber;
@@ -148,16 +148,37 @@ public class SkillTab : MonoBehaviour {
         SkillIconCentre.enabled = false;
 
         CurrentSkillPage = 2;
+
+        SkillSlot1 = EmptySkillIcon;
+        SkillSlot2 = EmptySkillIcon;
+        SkillSlot3 = EmptySkillIcon;
+        SkillSlot4 = EmptySkillIcon;
+        SkillSlot5 = EmptySkillIcon;
+        SkillSlot6 = EmptySkillIcon;
+        SkillSlot7 = EmptySkillIcon;
+        SkillSlot8 = EmptySkillIcon;
+        SkillSlot9 = EmptySkillIcon;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (NextSkillSlots.GetComponent<SkillPage>().GetSendNext())
         {
-            ++CurrentSkillPage;
+            if (CurrentSkillPage == 1)
+            {
+                SkillSlot1 = SkillIcons[0].sprite;
+                SkillSlot2 = SkillIcons[2].sprite;
+                SkillSlot3 = SkillIcons[1].sprite;
+            }
+            else if (CurrentSkillPage == 2)
+            {
+                SkillSlot4 = SkillIcons[0].sprite;
+                SkillSlot5 = SkillIcons[2].sprite;
+                SkillSlot6 = SkillIcons[1].sprite;
+            }
 
+            CurrentSkillPage++;
             NextSkillSlots.GetComponent<SkillPage>().SendNextPage(false);
 
             if (CurrentSkillPage == 2)
@@ -166,18 +187,38 @@ public class SkillTab : MonoBehaviour {
                 PrevSkillSlots.sprite = PrevPage1;
                 CurrSkillSlot.sprite = CurrPage2;
                 NextSkillSlots.sprite = NextPage3;
+
+                SkillIcons[0].sprite = SkillSlot4;
+                SkillIcons[2].sprite = SkillSlot5;
+                SkillIcons[1].sprite = SkillSlot6;
             }
             else if (CurrentSkillPage == 3)
             {
                 PrevSkillSlots.sprite = PrevPage2;
                 CurrSkillSlot.sprite = CurrPage3;
                 NextSkillSlots.enabled = false;
+
+                SkillIcons[0].sprite = SkillSlot7;
+                SkillIcons[2].sprite = SkillSlot8;
+                SkillIcons[1].sprite = SkillSlot9;
             }
         }
         else if (PrevSkillSlots.GetComponent<SkillPage>().GetSendPrev())
         {
-            --CurrentSkillPage;
+            if (CurrentSkillPage == 2)
+            {
+                SkillSlot4 = SkillIcons[0].sprite;
+                SkillSlot5 = SkillIcons[2].sprite;
+                SkillSlot6 = SkillIcons[1].sprite;
+            }
+            else if (CurrentSkillPage == 3)
+            {
+                SkillSlot7 = SkillIcons[0].sprite;
+                SkillSlot8 = SkillIcons[2].sprite;
+                SkillSlot9 = SkillIcons[1].sprite;
+            }
 
+            CurrentSkillPage--;
             PrevSkillSlots.GetComponent<SkillPage>().SendPrevPage(false);
 
             if (CurrentSkillPage == 1)
@@ -185,6 +226,10 @@ public class SkillTab : MonoBehaviour {
                 PrevSkillSlots.enabled = false;
                 CurrSkillSlot.sprite = CurrPage1;
                 NextSkillSlots.sprite = NextPage2;
+
+                SkillIcons[0].sprite = SkillSlot1;
+                SkillIcons[2].sprite = SkillSlot2;
+                SkillIcons[1].sprite = SkillSlot3;
             }
             else if (CurrentSkillPage == 2)
             {
@@ -192,6 +237,10 @@ public class SkillTab : MonoBehaviour {
                 PrevSkillSlots.sprite = PrevPage1;
                 CurrSkillSlot.sprite = CurrPage2;
                 NextSkillSlots.sprite = NextPage3;
+
+                SkillIcons[0].sprite = SkillSlot4;
+                SkillIcons[2].sprite = SkillSlot5;
+                SkillIcons[1].sprite = SkillSlot6;
             }
         }
         //Handles open and close of skill tab menu
@@ -455,9 +504,23 @@ public class SkillTab : MonoBehaviour {
         mySkillName.enabled = !mySkillName.enabled;
         mySkillDescription.enabled = !mySkillDescription.enabled;
 
+        if (CurrentSkillPage == 1)
+        {
+            NextSkillSlots.enabled = !NextSkillSlots.enabled;
+        }
+        else if (CurrentSkillPage == 2)
+        {
+            NextSkillSlots.enabled = !NextSkillSlots.enabled;
+            PrevSkillSlots.enabled = !PrevSkillSlots.enabled;
+        }
+        else if (CurrentSkillPage == 3)
+        {
+            PrevSkillSlots.enabled = !PrevSkillSlots.enabled;
+        }
+
         CurrSkillSlot.enabled = !CurrSkillSlot.enabled;
-        NextSkillSlots.enabled = !NextSkillSlots.enabled;
-        PrevSkillSlots.enabled = !PrevSkillSlots.enabled;
+
+
         SkillSlotLeft.enabled = !SkillSlotLeft.enabled;
         SkillSlotCentre.enabled = !SkillSlotCentre.enabled;
         SkillSlotRight.enabled = !SkillSlotRight.enabled;

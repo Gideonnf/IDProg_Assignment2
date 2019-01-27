@@ -3077,9 +3077,9 @@ MonoBehaviour:
   SkillIconRight: {fileID: 1361388127}
   SkillIcons: []
   EmptySkillIcon: {fileID: 21300000, guid: 781a5412e9b3bd74196dc66ab41ce2b4, type: 3}
-  CurrPage1: {fileID: 0}
-  CurrPage2: {fileID: 0}
-  CurrPage3: {fileID: 0}
+  CurrPage1: {fileID: 21300000, guid: f31f202c49d024f46ad87f98a8ea9c0b, type: 3}
+  CurrPage2: {fileID: 21300000, guid: f0e4fd0312399d54387c063c1e468065, type: 3}
+  CurrPage3: {fileID: 21300000, guid: dff3140bf4f1d8d4db32517e39882d0f, type: 3}
   NextPage2: {fileID: 21300000, guid: c2ab8a2f9c0efd24ebf3885b90c2773a, type: 3}
   NextPage3: {fileID: 21300000, guid: dc972f37215a8594ab9b4e60b4254ae6, type: 3}
   PrevPage1: {fileID: 21300000, guid: ce6d8b306d1f90744ad77232da43a080, type: 3}

@@ -19,7 +19,7 @@ public class InventorySelectionHandler : MonoBehaviour {
             //InventoryArray[i] = (int)InventoryManager.InventorySlots[i];
             //switch(InventoryArray[i])
             switch(InventoryManager.InventorySlots[i])
-            {
+            { // This is for changing the text based on the swiping up or down in the inventory manager
                 case Inventory_Manager.EquiptmentTypes.Weapons:
                     {
                         EquiptmentSlots[i].GetComponent<TextMeshProUGUI>().text = "Weapons";

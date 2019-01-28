@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour {
 
@@ -79,4 +80,30 @@ public class AudioManager : MonoBehaviour {
         // Stop the Sound
         s.source.Stop();
     }
+    // Change Music Volume
+    public void ChangeMusicVolume(float newVol)
+    {
+        // Loop through entire array and ONLY modify
+        // Music enum type audio
+        for(int index = 0; index < sounds.Length; ++index)
+        {
+            // Modify to new Vol
+            if (sounds[index].audioType == Sound.AUDIO_TYPE.AT_MUSIC)
+                sounds[index].source.volume = newVol;
+        }
+    }
+    // Change Music Volume USING SLIDER
+    public void ChangeMusicVolume_SLIDER()
+    {
+        float newVol = GameObject.Find("MusicSlider").GetComponent<Slider>().value;
+        // Loop through entire array and ONLY modify
+        // Music enum type audio
+        for (int index = 0; index < sounds.Length; ++index)
+        {
+            // Modify to new Vol
+            if (sounds[index].audioType == Sound.AUDIO_TYPE.AT_MUSIC)
+                sounds[index].source.volume = newVol;
+        }
+    }
+
 }

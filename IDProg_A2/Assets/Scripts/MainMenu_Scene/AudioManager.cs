@@ -45,8 +45,8 @@ public class AudioManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        PlaySound("BGMusic");
+    }
 	
 	
     // Play Sounds

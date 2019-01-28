@@ -10,7 +10,7 @@ public class AvalibleSkillPoints : MonoBehaviour
 
     // Use this for initialization
     void Start () {
-        AvalibleSkillPointsNumber = 5;
+        AvalibleSkillPointsNumber = 7;
     }
 	
 	// Update is called once per frame

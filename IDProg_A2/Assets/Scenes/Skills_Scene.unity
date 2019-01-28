@@ -1246,7 +1246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyLine: {fileID: 182867467}
-  To: {fileID: 1233316608}
+  To: {fileID: 1442403308}
   From: {fileID: 1245247380}
   Glow: {fileID: 21300000, guid: bf3f7443e581fbb49a76764df0d8d14f, type: 3}
   NoGlow: {fileID: 21300000, guid: 9e6e543ced44fd14d828e7a70593eeeb, type: 3}
@@ -7062,7 +7062,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: 0}
+  m_AnchoredPosition: {x: 155, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1679392252
@@ -7103,13 +7103,13 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5
+  m_Text: Number
 --- !u!222 &1679392254
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -314,7 +314,7 @@ public class SkillTab : MonoBehaviour {
                 {
                     if (CurrentButton.GetComponent<ButtonHandlerOrigin>().GetActive())
                     {
-                        SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() + 1);
+                        SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(5);
                         CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
                     }
                     else
@@ -336,7 +336,20 @@ public class SkillTab : MonoBehaviour {
             {
                 if (myButton.GetComponent<AddSkillButton>().GetState() != 2)
                 {
-                    CurrentButton.GetComponent<ButtonHandlerSolo>().ToggleActive();
+
+                    if (CurrentButton.GetComponent<ButtonHandlerSolo>().GetActive())
+                    {
+                        SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() + 1);
+                        CurrentButton.GetComponent<ButtonHandlerSolo>().ToggleActive();
+                    }
+                    else
+                    {
+                        if (SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() > 0)
+                        {
+                            SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() - 1);
+                            CurrentButton.GetComponent<ButtonHandlerSolo>().ToggleActive();
+                        }
+                    }
 
                     if (CurrentButton.GetComponent<ButtonHandlerSolo>().GetActive() == true)
                     {
@@ -358,7 +371,20 @@ public class SkillTab : MonoBehaviour {
             {
                 if (myButton.GetComponent<AddSkillButton>().GetState() != 2)
                 {
-                    CurrentButton.GetComponent<ButtonHandlerDuo>().ToggleActive();
+
+                    if (CurrentButton.GetComponent<ButtonHandlerDuo>().GetActive())
+                    {
+                        SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() + 1);
+                        CurrentButton.GetComponent<ButtonHandlerDuo>().ToggleActive();
+                    }
+                    else
+                    {
+                        if (SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() > 0)
+                        {
+                            SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() - 1);
+                            CurrentButton.GetComponent<ButtonHandlerDuo>().ToggleActive();
+                        }
+                    }
 
                     if (CurrentButton.GetComponent<ButtonHandlerDuo>().GetActive() == true)
                     {
@@ -380,7 +406,20 @@ public class SkillTab : MonoBehaviour {
             {
                 if (myButton.GetComponent<AddSkillButton>().GetState() != 2)
                 {
-                    CurrentButton.GetComponent<ButtonHandlerTrio>().ToggleActive();
+
+                    if (CurrentButton.GetComponent<ButtonHandlerTrio>().GetActive())
+                    {
+                        SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() + 1);
+                        CurrentButton.GetComponent<ButtonHandlerTrio>().ToggleActive();
+                    }
+                    else
+                    {
+                        if (SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() > 0)
+                        {
+                            SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() - 1);
+                            CurrentButton.GetComponent<ButtonHandlerTrio>().ToggleActive();
+                        }
+                    }
 
                     if (CurrentButton.GetComponent<ButtonHandlerTrio>().GetActive() == true)
                     {
@@ -565,6 +604,7 @@ public class SkillTab : MonoBehaviour {
                         if (Buttons[j].GetComponent<ButtonHandlerSolo>().GetSpriteInactive() == SkillIcons[CurrentSlotNumber].sprite)
                         {
                             Buttons[j].GetComponent<ButtonHandlerSolo>().ToggleActive();
+                            SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() + 1);
                         }
                     }
                     else if (Buttons[j].GetComponent<ButtonHandlerDuo>() != null)
@@ -572,13 +612,15 @@ public class SkillTab : MonoBehaviour {
                         if (Buttons[j].GetComponent<ButtonHandlerDuo>().GetSpriteInactive() == SkillIcons[CurrentSlotNumber].sprite)
                         {
                             Buttons[j].GetComponent<ButtonHandlerDuo>().ToggleActive();
+                            SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() + 1);
                         }
                     }
                     else if (Buttons[j].GetComponent<ButtonHandlerTrio>() != null)
                     {
                         if (Buttons[j].GetComponent<ButtonHandlerTrio>().GetSpriteInactive() == SkillIcons[CurrentSlotNumber].sprite)
                         {
-                           Buttons[j].GetComponent<ButtonHandlerTrio>().ToggleActive();                            
+                           Buttons[j].GetComponent<ButtonHandlerTrio>().ToggleActive();
+                            SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() + 1);
                         }
                     }
                 }

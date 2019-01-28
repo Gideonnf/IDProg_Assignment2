@@ -83,8 +83,8 @@ public class Display_Manager : MonoBehaviour {
 
 
         //Doesnt work
-        Description.GetComponentInChildren<Button>().enabled = true;
-        Description.GetComponentInChildren<Image>().enabled = true;
+       // Description.GetComponentInChildren<Button>().enabled = true;
+      //  Description.GetComponentInChildren<Image>().enabled = true;
 
         // Set the boolean to true
         DisplayedDescription[(int)stats] = true;
@@ -108,8 +108,8 @@ public class Display_Manager : MonoBehaviour {
         DescriptionButton.GetComponent<Button>().enabled = false;
 
         //Doesnt work also
-        Description.GetComponentInChildren<Button>().enabled = false;
-        Description.GetComponentInChildren<Image>().enabled = false;
+        //Description.GetComponentInChildren<Button>().enabled = false;
+        //Description.GetComponentInChildren<Image>().enabled = false;
 
         isDisplaying = false;
     }

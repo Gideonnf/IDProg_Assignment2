@@ -7,19 +7,28 @@ using TMPro;
 public class ItemSelectionHandler : MonoBehaviour {
     public enum Rarity
     {
+        None,
         Common,
         Uncommon,
         Rare,
         Legendary,
         TotalRarity
     }
-    public enum WeaponTypes
+    public enum ItemType
     {
-        Rifles,
-        Shield,
-        LaserSwords,
-        TotalWeaponTypes
+        None,
+        Head,
+        Chest,
+        Weapons,
+        Leggings,
+        Boots,
+        TotalItemTypes
     }
+
+    // I Realized i should have made this polymorphsim
+    // Have a generic Equiptment class
+    // And have weapons inherit
+    // But editing now might require a lot of changes
 
     public class Weapons    
     {
@@ -27,7 +36,7 @@ public class ItemSelectionHandler : MonoBehaviour {
         public string WeaponName;
         public int AttPower;
         public int CritPower;
-        public WeaponTypes type;
+        public ItemType type;
         public Rarity rarity;
         public int id;
 
@@ -36,58 +45,84 @@ public class ItemSelectionHandler : MonoBehaviour {
             WeaponName = WeaponName_;
             AttPower = AttPower_;
             CritPower = CritPower_;
-            type =  (WeaponTypes)type_;
+            type =  (ItemType)type_;
             rarity = (Rarity)rarity_;
             id = id_;
+        }
+        public Weapons(int type_)
+        {
+            // Default value
+            // Represents empty objects
+            WeaponName = "";
+            AttPower = 0;
+            CritPower = 0;
+            type = (ItemType)type_;
+            rarity = Rarity.None;
+            id = 0;
         }
     }
 
     public List<Weapons> WeaponList = new List<Weapons>();
     public List<Weapons> ApparelList = new List<Weapons>(); // Using weapons cause its just for showcasing
     public GameObject[] ItemSlots = new GameObject[5];
+    public GameObject EquipmentManager;
+    public GameObject EquipButton;
+    private Equipment_Manager EMScript;
+
+    [System.NonSerialized]
+    private GameObject ActiveEquipment;
+
+
     private Inventory_Manager.EquiptmentTypes ActiveType;
     private Inventory_Manager InventoryManager;
+    private bool isShown;
     private int offSet;
 	// Use this for initialization
 	void Start () {
         //Initalize weapons
         InventoryManager = GetComponentInParent<Inventory_Manager>();
         offSet = 0;
-        Weapons newWeapon = new Weapons("Pew Rifle", 29, 20, 0, 2, 1); // Rifle
+        Weapons newWeapon = new Weapons("Pew Rifle", 29, 20, 3, 3, 1); // Rifle
         WeaponList.Add(newWeapon);
-        newWeapon = new Weapons("Laser Sword", 35, 15, 2, 2, 2); // Sword
+        newWeapon = new Weapons("Laser Sword", 35, 15, 3, 3, 2); // Sword
         WeaponList.Add(newWeapon);
-        newWeapon = new Weapons("Shield", 10, 5, 1, 1, 3); // Shield
+        newWeapon = new Weapons("Shield", 10, 5, 3, 2, 3); // Shield
         WeaponList.Add(newWeapon);
-        newWeapon = new Weapons("Strong Rifle", 45, 29, 0, 3, 4);
+        newWeapon = new Weapons("Strong Rifle", 45, 29, 3, 4, 4);
         WeaponList.Add(newWeapon); // Legendary rifle
-        newWeapon = new Weapons("OP Sword", 60, 35, 2, 3, 5);
+        newWeapon = new Weapons("OP Sword", 60, 35, 3, 4, 5);
         WeaponList.Add(newWeapon);
-        newWeapon = new Weapons("Test Sword", 30, 15, 2, 3, 6);
+        newWeapon = new Weapons("Test Sword", 30, 15, 3, 4, 6);
         WeaponList.Add(newWeapon);
-        newWeapon = new Weapons("Final Sword", 43, 12, 2, 3, 7);
+        newWeapon = new Weapons("Final Sword", 43, 12, 3, 4, 7);
         WeaponList.Add(newWeapon);
-        newWeapon = new Weapons("Filler Rifle", 43, 12, 0, 3, 8);
+        newWeapon = new Weapons("Filler Rifle", 43, 12, 3, 4, 8);
         WeaponList.Add(newWeapon);
 
 
-        newWeapon = new Weapons("Helmet", 29, 20, 0, 2, 9); // Rifle
+        newWeapon = new Weapons("Helmet", 29, 20, 1, 3, 9); // Rifle
         ApparelList.Add(newWeapon);
-        newWeapon = new Weapons("Chest Piece", 35, 15, 2, 2, 10); // Sword
+        newWeapon = new Weapons("Chest Piece", 35, 15, 2, 3, 10); // Sword
         ApparelList.Add(newWeapon);
-        newWeapon = new Weapons("Leggings", 10, 5, 1, 1, 11); // Shield
+        newWeapon = new Weapons("Leggings", 10, 5, 4, 2, 11); // Shield
         ApparelList.Add(newWeapon);
-        newWeapon = new Weapons("Boots", 45, 29, 0, 3, 12);
+        newWeapon = new Weapons("Boots", 45, 29, 5, 4, 12);
         ApparelList.Add(newWeapon); // Legendary rifle
-        newWeapon = new Weapons("Gloves", 60, 35, 2, 3, 13);
+        newWeapon = new Weapons("Testing Chest", 30, 15, 2, 4, 13);
         ApparelList.Add(newWeapon);
-        newWeapon = new Weapons("Testing Gloves", 30, 15, 2, 3, 13);
+        newWeapon = new Weapons("Testing Leggings", 10, 15, 4, 4, 13);
         ApparelList.Add(newWeapon);
-        newWeapon = new Weapons("Testing Again", 10, 15, 2, 3, 13);
-        ApparelList.Add(newWeapon);
-        newWeapon = new Weapons("Testing Again2", 5, 5, 2, 3, 13);
+        newWeapon = new Weapons("Testing Helmet", 5, 5, 1, 4, 13);
         ApparelList.Add(newWeapon);
 
+        for(int i = 0; i < ItemSlots.Length; ++i)
+        {
+            ItemSlots[i].transform.parent.gameObject.GetComponent<Image>().enabled = false; // works
+           // ItemSlots[i].GetComponentInParent<Image>().enabled = false; // doesnt work
+            // idk why lol
+        }
+        EMScript = EquipmentManager.GetComponent<Equipment_Manager>();
+        isShown = false;
     }
 
     // Update is called once per frame
@@ -106,7 +141,25 @@ public class ItemSelectionHandler : MonoBehaviour {
         {
             ShiftUp();
         }
-	}
+
+        if (EMScript.isShown && isShown)
+        { // If both are showiing
+            EquipButton.SetActive(true);
+
+            //EquipButton.GetComponent<Image>().enabled = true;
+            //EquipButton.GetComponent<Button>().enabled = true;
+            //EquipButton.GetComponentInChildren<Text>().text = "";
+        }
+        else
+        { // If both aren't showing
+            EquipButton.SetActive(false);
+
+            //EquipButton.GetComponent<Image>().enabled = false;
+            //EquipButton.GetComponent<Button>().enabled = false;
+            //EquipButton.GetComponentInChildren<Text>().text = "Equip";
+
+        }
+    }
 
     public void ChangeEquipmentType()
     { // For changing between weapons, apparel, etc
@@ -119,26 +172,34 @@ public class ItemSelectionHandler : MonoBehaviour {
             // For now there is only 5
             switch(ActiveType)
             {
-                
                 case Inventory_Manager.EquiptmentTypes.Weapons:
                     {
-                        ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[i].WeaponName;
-                        ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[i];
-                        ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
+                        if(i < WeaponList.Count)
+                        {
+                            ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[i].WeaponName;
+                            ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[i];
+                            ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
+                        }
                     }
                     break;
                 case Inventory_Manager.EquiptmentTypes.Apparel:
                     {
-                        ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[i].WeaponName;
-                        ItemSlots[i].GetComponent<ItemPress>().currentItem = ApparelList[i];
-                        ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
+                        if (i < ApparelList.Count)
+                        {
+                            ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[i].WeaponName;
+                            ItemSlots[i].GetComponent<ItemPress>().currentItem = ApparelList[i];
+                            ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
+                        }
                     }
                     break;
                 default:
                     {
-                        ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[i].WeaponName;
-                        ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[i];
-                        ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
+                        if (i < WeaponList.Count)
+                        {
+                            ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[i].WeaponName;
+                            ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[i];
+                            ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
+                        }
                     }
                     break;
             }
@@ -160,8 +221,11 @@ public class ItemSelectionHandler : MonoBehaviour {
 
                         for (i = ItemSlots.Length - 1; i >= 0; --i)
                         {
-                            ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i - 1)];
-                            ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i - 1)].WeaponName;
+                           // if (offSet + (i - 1) > WeaponList.Count)
+                          //  {
+                                ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i - 1)];
+                                ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i - 1)].WeaponName;
+                          //  }
                         }
 
                         // ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet].WeaponName;
@@ -179,8 +243,11 @@ public class ItemSelectionHandler : MonoBehaviour {
 
                         for (i = ItemSlots.Length - 1; i >= 0; --i)
                         {
-                            ItemSlots[i].GetComponent<ItemPress>().currentItem = ApparelList[offSet + (i - 1)];
-                            ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[offSet + (i - 1)].WeaponName;
+                           // if (offSet + (i - 1) > ApparelList.Count)
+                           // {
+                                ItemSlots[i].GetComponent<ItemPress>().currentItem = ApparelList[offSet + (i - 1)];
+                                ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[offSet + (i - 1)].WeaponName;
+                           // }
                         }
 
                         // ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[offSet].WeaponName;
@@ -198,10 +265,12 @@ public class ItemSelectionHandler : MonoBehaviour {
 
                         for (i = ItemSlots.Length - 1; i >= 0; --i)
                         {
-                            ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i - 1)];
-                            ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i - 1)].WeaponName;
+                          //  if (offSet + (i - 1) > WeaponList.Count)
+                          //  {
+                                ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i - 1)];
+                                ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i - 1)].WeaponName;
+                          //  }
                         }
-
                         // ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet].WeaponName;
                         // ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet];
                         offSet--;
@@ -221,15 +290,26 @@ public class ItemSelectionHandler : MonoBehaviour {
                 {
                     if (ItemSlots.Length + offSet < WeaponList.Count)
                     { // If it isnt at teh end of hte list let them shift up
+                        for (int x = 0; x < ItemSlots.Length; ++x)
+                        { // turn off any descriptions that are activated
+                            ItemSlots[x].transform.parent.gameObject.GetComponent<Image>().enabled = false;
+                            ItemSlots[x].GetComponentInChildren<TextMeshProUGUI>().text = "";
+
+                        }
+
                         int i = 0;
                         for (i = 0; i <= ItemSlots.Length - 1; ++i)
                         { // Less than equal to because the 4th element(last in array)
                           // can still swap with the next element in the weapon list
-                            ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i + 1)];
-                            ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i + 1)].WeaponName;
+                         //  if (offSet + (i + 1) > WeaponList.Count)
+                         //  { // Make sure that it exist inside the weaponlist
+                                ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i + 1)];
+                                ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i + 1)].WeaponName;
+
+                          //  }
                         }
                         offSet++; // increase offset
-
+                        
                     }
 
                 }
@@ -238,12 +318,21 @@ public class ItemSelectionHandler : MonoBehaviour {
                 {
                     if (ItemSlots.Length + offSet < ApparelList.Count)
                     { // If it isnt at teh end of hte list let them shift up
+                        for (int x = 0; x < ItemSlots.Length; ++x)
+                        { // turn off any descriptions that are activated
+                            ItemSlots[x].transform.parent.gameObject.GetComponent<Image>().enabled = false;
+                            ItemSlots[x].GetComponentInChildren<TextMeshProUGUI>().text = "";
+
+                        }
                         int i = 0;
                         for (i = 0; i <= ItemSlots.Length - 1; ++i)
                         { // Less than equal to because the 4th element(last in array)
                           // can still swap with the next element in the weapon list
-                            ItemSlots[i].GetComponent<ItemPress>().currentItem = ApparelList[offSet + (i + 1)];
-                            ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[offSet + (i + 1)].WeaponName;
+                            //if (offSet + (i + 1) > ApparelList.Count)
+                            //{
+                                ItemSlots[i].GetComponent<ItemPress>().currentItem = ApparelList[offSet + (i + 1)];
+                                ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[offSet + (i + 1)].WeaponName;
+                           /// }
                         }
                         offSet++; // increase offset
 
@@ -255,12 +344,21 @@ public class ItemSelectionHandler : MonoBehaviour {
                 {
                     if (ItemSlots.Length + offSet < WeaponList.Count)
                     { // If it isnt at teh end of hte list let them shift up
+                        for (int x = 0; x < ItemSlots.Length; ++x)
+                        { // turn off any descriptions that are activated
+                            ItemSlots[x].transform.parent.gameObject.GetComponent<Image>().enabled = false;
+                            ItemSlots[x].GetComponentInChildren<TextMeshProUGUI>().text = "";
+
+                        }
                         int i = 0;
                         for (i = 0; i <= ItemSlots.Length - 1; ++i)
                         { // Less than equal to because the 4th element(last in array)
                           // can still swap with the next element in the weapon list
-                            ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i + 1)];
-                            ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i + 1)].WeaponName;
+                           // if (offSet + (i + 1) > WeaponList.Count)
+                           // {
+                                ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i + 1)];
+                                ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i + 1)].WeaponName;
+                           // }
                         }
                         offSet++; // increase offset
 
@@ -270,5 +368,127 @@ public class ItemSelectionHandler : MonoBehaviour {
                 break;
 
         }
+    }
+
+    public void ShowItem(int index)
+    {
+        bool SameButton = false;
+       // Image indexImage = ;
+        if (ItemSlots[index].transform.parent.gameObject.GetComponent<Image>().enabled == true)
+        {
+            SameButton = true;
+        }
+        if(isShown == true)
+        { // There is currently an item on display
+            for(int i = 0; i < ItemSlots.Length; ++i)
+            { // turn off any tthat is activated
+                ItemSlots[i].transform.parent.gameObject.GetComponent<Image>().enabled = false;
+                ItemSlots[i].GetComponentInChildren<TextMeshProUGUI>().text = "";
+
+            }
+            isShown = false;
+        }
+
+        if (isShown == false && SameButton == false)
+        { // theyarenot pressing the same button again
+
+            ItemSlots[index].transform.parent.gameObject.GetComponent<Image>().enabled = true;
+            string ItemDescription = "Weapon Stats \n" +
+                                        "Attack Power (+" + ItemSlots[index].GetComponent<ItemPress>().currentItem.AttPower + ")\n" +
+                                        "Critical Power (+" + ItemSlots[index].GetComponent<ItemPress>().currentItem.CritPower + ")\n";
+            ItemSlots[index].GetComponentInChildren<TextMeshProUGUI>().text = ItemDescription;
+            ActiveEquipment = ItemSlots[index];
+            isShown = true;
+        }
+    }
+
+    public void EquipItems()
+    {
+        
+        Weapons SelectedEquipment = ActiveEquipment.GetComponent<ItemPress>().currentItem;
+        Weapons EquippedEquipment = EMScript.ActiveEquipped.GetComponent<ItemPress>().currentItem;
+
+
+        if (EMScript.EquipItems(EMScript.ActiveEquipped, ActiveEquipment) == true)
+        {
+            switch (ActiveType)
+            {
+                case Inventory_Manager.EquiptmentTypes.Weapons:
+                {
+                    for (int i = 0; i < WeaponList.Count; ++i)
+                    {
+                        if (SelectedEquipment.id == WeaponList[i].id)
+                        { // Foudn the item that was swapped
+                            // remove it
+                            WeaponList.RemoveAt(i);
+                            ItemSlots[i - (offSet)].transform.parent.gameObject.GetComponent<Image>().enabled = false;
+                            ItemSlots[i - (offSet)].GetComponentInChildren<TextMeshProUGUI>().text = "";
+
+                            //WeaponList.Add(EMScript.ActiveEquipped)
+                            break;
+                        }
+                    }
+
+                    if (EquippedEquipment.WeaponName != "")
+                    { // If the equipped slot is not empty
+                        // Add it into the list
+                        WeaponList.Add(EquippedEquipment);
+                    }
+
+                }
+                    break;
+            case Inventory_Manager.EquiptmentTypes.Apparel:
+                {
+                    for (int i = 0; i < ApparelList.Count; ++i)
+                    {
+                        if (SelectedEquipment.id == ApparelList[i].id)
+                        { // found the item that was swapped
+                            // Remove it
+                            ApparelList.RemoveAt(i);
+                            ItemSlots[i].transform.parent.gameObject.GetComponent<Image>().enabled = false;
+                            ItemSlots[i].GetComponentInChildren<TextMeshProUGUI>().text = "";
+
+                            //WeaponList.Add(EMScript.ActiveEquipped)
+                            break;
+                        }
+                    }
+
+                    if (EquippedEquipment.WeaponName != "")
+                    { // If the equipped slot is not empty
+                        //Add it into the list
+                        ApparelList.Add(EquippedEquipment);
+                    }
+
+                }
+                    break;
+            default:
+                {
+
+                    for (int i = 0; i < WeaponList.Count; ++i)
+                    {
+                        if (SelectedEquipment.id == WeaponList[i].id)
+                        { // Foudn the item that was swapped
+                            // remove it
+                            WeaponList.RemoveAt(i);
+                            ItemSlots[i].transform.parent.gameObject.GetComponent<Image>().enabled = false;
+                            ItemSlots[i].GetComponentInChildren<TextMeshProUGUI>().text = "";
+
+                            //WeaponList.Add(EMScript.ActiveEquipped)
+                            break;
+                        }
+                    }
+
+                    if (EquippedEquipment.WeaponName != "")
+                    { // If the equipped slot is not empty
+                        // Add it into the list
+                        WeaponList.Add(EquippedEquipment);
+                    }
+
+
+                }
+                    break;
+            }
+        }
+        ChangeEquipmentType();
     }
 }

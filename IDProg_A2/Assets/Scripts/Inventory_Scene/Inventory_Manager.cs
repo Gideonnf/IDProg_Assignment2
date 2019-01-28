@@ -15,13 +15,17 @@ public class Inventory_Manager : MonoBehaviour {
     public EquiptmentTypes[] InventorySlots = new EquiptmentTypes[(int)EquiptmentTypes.TotalTypes];
     public GameObject[] Containers = new GameObject[(int)EquiptmentTypes.TotalTypes];
 
+    
+
     [System.NonSerialized]
     public EquiptmentTypes ActiveEquiptmentType;
+    [System.NonSerialized]
     public bool isChanged;
+   
 
     // An array to hold the number of active slots
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         ActiveEquiptmentType = EquiptmentTypes.Weapons;
         isChanged = true;
 	}

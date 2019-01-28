@@ -14,6 +14,9 @@ public class AudioManager : MonoBehaviour {
     // Array to Store all the Sounds Clips
     [SerializeField]
     private Sound[] sounds;
+    // Sliders that Affect the Audio
+    [SerializeField]
+    private GameObject musicSlider, soundSlider;
 
 
     private void Awake()
@@ -92,18 +95,29 @@ public class AudioManager : MonoBehaviour {
                 sounds[index].source.volume = newVol;
         }
     }
-    // Change Music Volume USING SLIDER
-    public void ChangeMusicVolume_SLIDER()
+    // Change Music Volume
+    public void ChangeSoundVolume(float newVol)
     {
-        float newVol = GameObject.Find("MusicSlider").GetComponent<Slider>().value;
         // Loop through entire array and ONLY modify
         // Music enum type audio
         for (int index = 0; index < sounds.Length; ++index)
         {
             // Modify to new Vol
-            if (sounds[index].audioType == Sound.AUDIO_TYPE.AT_MUSIC)
+            if (sounds[index].audioType == Sound.AUDIO_TYPE.AT_SOUND)
                 sounds[index].source.volume = newVol;
         }
+    }
+    // Change Music Volume USING SLIDER
+    public void ChangeMusicVolume_SLIDER()
+    {
+        float newVol = musicSlider.GetComponent<Slider>().value;
+        ChangeMusicVolume(newVol);
+    }
+    // Change Music Volume USING SLIDER
+    public void ChangeSoundVolume_SLIDER()
+    {
+        float newVol = soundSlider.GetComponent<Slider>().value;
+        ChangeSoundVolume(newVol);
     }
 
 }

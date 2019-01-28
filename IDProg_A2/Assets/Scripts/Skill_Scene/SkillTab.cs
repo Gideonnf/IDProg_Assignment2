@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SkillTab : MonoBehaviour {
 
+    public Text SkillPointNumber;
+
     public Image myImage;
     public Image myButton;
     public Image mySkillImage;
@@ -78,7 +80,7 @@ public class SkillTab : MonoBehaviour {
 
    public List<Button> Buttons;
    Button CurrentButton;
-    int CurrentButtonNumber;
+   int CurrentButtonNumber;
 
     // Use this for initialization
     void Start ()
@@ -310,8 +312,20 @@ public class SkillTab : MonoBehaviour {
             {
                 if (myButton.GetComponent<AddSkillButton>().GetState() != 2)
                 {
-                    CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
-
+                    if (CurrentButton.GetComponent<ButtonHandlerOrigin>().GetActive())
+                    {
+                        SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() + 1);
+                        CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
+                    }
+                    else
+                    {
+                        if (SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() > 0)
+                        {
+                            SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(SkillPointNumber.GetComponent<AvalibleSkillPoints>().GetAvalibleSkillPoints() - 1);
+                            CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
+                        }
+                    }
+                   
                     if (CurrentButton.GetComponent<ButtonHandlerOrigin>().GetActive() == true)
                         myButton.GetComponent<AddSkillButton>().SetState(1);
                     if (CurrentButton.GetComponent<ButtonHandlerOrigin>().GetActive() == false)

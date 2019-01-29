@@ -401,9 +401,44 @@ public class ItemSelectionHandler : MonoBehaviour {
         { // theyarenot pressing the same button again
 
             ItemSlots[index].transform.parent.gameObject.GetComponent<Image>().enabled = true;
+
+            string type = "";
+            switch (ItemSlots[index].GetComponent<ItemPress>().currentItem.type)
+            {
+                case ItemSelectionHandler.ItemType.Head:
+                    {
+                        type = "Type: Head";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Chest:
+                    {
+                        type = "Type: Chest";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Weapons:
+                    {
+                        type = "Type: Weapons";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Leggings:
+                    {
+                        type = "Type: Leggings";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Boots:
+                    {
+                        type = "Type: Boots";
+                    }
+                    break;
+
+            }
+
             string ItemDescription = "Weapon Stats \n" +
                                         "Attack Power (+" + ItemSlots[index].GetComponent<ItemPress>().currentItem.AttPower + ")\n" +
-                                        "Critical Power (+" + ItemSlots[index].GetComponent<ItemPress>().currentItem.CritPower + ")\n";
+                                        "Critical Power (+" + ItemSlots[index].GetComponent<ItemPress>().currentItem.CritPower + ")\n" +
+                                        type;
+
+
             ItemSlots[index].GetComponentInChildren<TextMeshProUGUI>().text = ItemDescription;
             ActiveEquipment = ItemSlots[index];
             isShown = true;

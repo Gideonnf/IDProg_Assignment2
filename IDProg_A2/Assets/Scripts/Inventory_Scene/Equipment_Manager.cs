@@ -42,11 +42,12 @@ public class Equipment_Manager : MonoBehaviour {
         playerTemp = new Character();
         isShown = false;
         Equipped = false;
+        string type = "";
         for (int i = 0; i < EquipmentSlots.Length; ++i)
         {
             EquipmentSlots[i].GetComponent<ItemPress>().currentItem = playerTemp.Slots[i];
-            EquipmentSlots[i].GetComponentInChildren<Text>().text = "Empty";
 
+            EquipmentSlots[i].GetComponentInChildren<Text>().text = "Empty";
         }
 
 
@@ -76,10 +77,41 @@ public class Equipment_Manager : MonoBehaviour {
             ItemSelectionHandler.Weapons temp = EquipmentSlot_.GetComponent<ItemPress>().currentItem;
             EquipmentSlot_.GetComponent<ItemPress>().currentItem = ItemToSwap.GetComponent<ItemPress>().currentItem;
             ItemToSwap.GetComponent<ItemPress>().currentItem = temp;
+            string type = "";
+            switch (ItemToSwap.GetComponent<ItemPress>().currentItem.type)
+            {
+                case ItemSelectionHandler.ItemType.Head:
+                    {
+                        type = "Head";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Chest:
+                    {
+                        type = "Chest";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Weapons:
+                    {
+                        type = "Weapons";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Leggings:
+                    {
+                        type = "Leggings";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Boots:
+                    {
+                        type = "Boots";
+                    }
+                    break;
+
+            }
 
             string ItemDescription = "Weapon Stats \n" +
                             "Attack Power (+" + ItemToSwap.GetComponent<ItemPress>().currentItem.AttPower + ")\n" +
-                            "Critical Power (+" + ItemToSwap.GetComponent<ItemPress>().currentItem.CritPower + ")\n";
+                            "Critical Power (+" + ItemToSwap.GetComponent<ItemPress>().currentItem.CritPower + ")\n\n" +
+                            type;
             ItemToSwap.GetComponentInChildren<TextMeshProUGUI>().text = ItemDescription;
 
 
@@ -111,12 +143,44 @@ public class Equipment_Manager : MonoBehaviour {
         
         if(isShown == false && SameButton == false)
         {
+            string type = "";
+            switch (EquipmentSlots[index].GetComponent<ItemPress>().currentItem.type)
+            {
+                case ItemSelectionHandler.ItemType.Head:
+                    {
+                        type = "Type: Head";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Chest:
+                    {
+                        type = "Type: Chest";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Weapons:
+                    {
+                        type = "Type: Weapons";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Leggings:
+                    {
+                        type = "Type: Leggings";
+                    }
+                    break;
+                case ItemSelectionHandler.ItemType.Boots:
+                    {
+                        type = "Type: Boots";
+                    }
+                    break;
+
+            }
+
             if (EquipmentSlots[index].GetComponent<ItemPress>().currentItem.WeaponName != "")
             {
                 EquipmentSlots[index].transform.parent.gameObject.GetComponent<Image>().enabled = true;
                 string ItemDescription = "Weapon Stats \n" +
                                             "Attack Power (+" + EquipmentSlots[index].GetComponent<ItemPress>().currentItem.AttPower + ")\n" +
-                                            "Critical Power (+" + EquipmentSlots[index].GetComponent<ItemPress>().currentItem.CritPower + ")\n";
+                                            "Critical Power (+" + EquipmentSlots[index].GetComponent<ItemPress>().currentItem.CritPower + ")\n" +
+                                            type;
                 EquipmentSlots[index].GetComponentInChildren<TextMeshProUGUI>().text = ItemDescription;
                 ActiveEquipped = EquipmentSlots[index];
                 isShown = true;
@@ -125,6 +189,7 @@ public class Equipment_Manager : MonoBehaviour {
             { // t is empty, so it will still be set as the current active
               // but nothing will be displayed
                 EquipmentSlots[index].transform.parent.gameObject.GetComponent<Image>().enabled = true;
+                EquipmentSlots[index].GetComponentInChildren<TextMeshProUGUI>().text = "\n\n\n\n\n\n" + type;
                 isShown = true;
                 ActiveEquipped = EquipmentSlots[index];
             }

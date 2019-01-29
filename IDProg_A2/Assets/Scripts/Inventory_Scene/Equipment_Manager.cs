@@ -65,7 +65,11 @@ public class Equipment_Manager : MonoBehaviour {
         {
             //switch()
             if(EquipmentSlots[i].GetComponent<ItemPress>().currentItem.WeaponName != "")
+            {
                 EquipmentSlots[i].GetComponentInChildren<Text>().text = EquipmentSlots[i].GetComponent<ItemPress>().currentItem.WeaponName;
+                EquipmentSlots[i].GetComponentInChildren<Text>().color = EquipmentSlots[i].GetComponent<ItemPress>().currentItem.textColor;
+
+            }
         }
     }
 
@@ -189,7 +193,7 @@ public class Equipment_Manager : MonoBehaviour {
             { // t is empty, so it will still be set as the current active
               // but nothing will be displayed
                 EquipmentSlots[index].transform.parent.gameObject.GetComponent<Image>().enabled = true;
-                EquipmentSlots[index].GetComponentInChildren<TextMeshProUGUI>().text = "\n\n\n\n\n\n" + type;
+                EquipmentSlots[index].GetComponentInChildren<TextMeshProUGUI>().text = "\n\n\n\n\n" + type;
                 isShown = true;
                 ActiveEquipped = EquipmentSlots[index];
             }

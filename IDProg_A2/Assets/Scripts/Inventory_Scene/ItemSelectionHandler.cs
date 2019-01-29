@@ -39,6 +39,7 @@ public class ItemSelectionHandler : MonoBehaviour {
         public ItemType type;
         public Rarity rarity;
         public int id;
+        public Color textColor;
 
         public Weapons(string WeaponName_, int AttPower_, int CritPower_, int type_, int rarity_, int id_)
         {
@@ -48,6 +49,37 @@ public class ItemSelectionHandler : MonoBehaviour {
             type =  (ItemType)type_;
             rarity = (Rarity)rarity_;
             id = id_;
+
+            switch(rarity_)
+            {
+                case (int)Rarity.None:
+                    {
+                        textColor = new Color(0.5f, 0.5f, 0.5f);
+                    }
+                    break;
+                case (int)Rarity.Common:
+                    {
+                        textColor = new Color(0.5f, 0.5f, 0.5f);
+                    }
+                    break;
+
+                case (int)Rarity.Uncommon:
+                    {
+                        textColor = new Color(1, 1, 1);
+                    }
+                    break;
+
+                case (int)Rarity.Rare:
+                    {
+                        textColor = new Color(0.1f, 0.5f, 1.0f);
+                    }
+                    break;
+                case (int)Rarity.Legendary:
+                    {
+                        textColor = new Color(1.0f, 1.0f, 0.0f);
+                    }
+                    break;
+            }
         }
         public Weapons(int type_)
         {
@@ -59,6 +91,8 @@ public class ItemSelectionHandler : MonoBehaviour {
             type = (ItemType)type_;
             rarity = Rarity.None;
             id = 0;
+
+            textColor = new Color(1, 1, 1);
         }
     }
 
@@ -153,19 +187,10 @@ public class ItemSelectionHandler : MonoBehaviour {
         if (EMScript.isShown && isShown)
         { // If both are showiing
             EquipButton.SetActive(true);
-
-            //EquipButton.GetComponent<Image>().enabled = true;
-            //EquipButton.GetComponent<Button>().enabled = true;
-            //EquipButton.GetComponentInChildren<Text>().text = "";
         }
         else
         { // If both aren't showing
             EquipButton.SetActive(false);
-
-            //EquipButton.GetComponent<Image>().enabled = false;
-            //EquipButton.GetComponent<Button>().enabled = false;
-            //EquipButton.GetComponentInChildren<Text>().text = "Equip";
-
         }
     }
 
@@ -185,6 +210,7 @@ public class ItemSelectionHandler : MonoBehaviour {
                         if(i < WeaponList.Count)
                         {
                             ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[i].WeaponName;
+                            ItemSlots[i].GetComponentInChildren<Text>().color = WeaponList[i].textColor;
                             ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[i];
                             ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
                         }
@@ -195,6 +221,7 @@ public class ItemSelectionHandler : MonoBehaviour {
                         if (i < ApparelList.Count)
                         {
                             ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[i].WeaponName;
+                            ItemSlots[i].GetComponentInChildren<Text>().color = ApparelList[i].textColor;
                             ItemSlots[i].GetComponent<ItemPress>().currentItem = ApparelList[i];
                             ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
                         }
@@ -205,6 +232,7 @@ public class ItemSelectionHandler : MonoBehaviour {
                         if (i < WeaponList.Count)
                         {
                             ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[i].WeaponName;
+                            ItemSlots[i].GetComponentInChildren<Text>().color = WeaponList[i].textColor;
                             ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[i];
                             ItemSlots[i].GetComponent<ItemPress>().buttonType = ActiveType;
                         }
@@ -233,7 +261,9 @@ public class ItemSelectionHandler : MonoBehaviour {
                           //  {
                                 ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i - 1)];
                                 ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i - 1)].WeaponName;
-                          //  }
+                                ItemSlots[i].GetComponentInChildren<Text>().color = WeaponList[offSet + (i - 1)].textColor;
+
+                            //  }
                         }
 
                         // ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet].WeaponName;
@@ -255,7 +285,9 @@ public class ItemSelectionHandler : MonoBehaviour {
                            // {
                                 ItemSlots[i].GetComponent<ItemPress>().currentItem = ApparelList[offSet + (i - 1)];
                                 ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[offSet + (i - 1)].WeaponName;
-                           // }
+                                ItemSlots[i].GetComponentInChildren<Text>().color = ApparelList[offSet + (i - 1)].textColor;
+
+                            // }
                         }
 
                         // ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[offSet].WeaponName;
@@ -277,7 +309,9 @@ public class ItemSelectionHandler : MonoBehaviour {
                           //  {
                                 ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i - 1)];
                                 ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i - 1)].WeaponName;
-                          //  }
+                                ItemSlots[i].GetComponentInChildren<Text>().color = WeaponList[offSet + (i - 1)].textColor;
+
+                            //  }
                         }
                         // ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet].WeaponName;
                         // ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet];
@@ -313,8 +347,9 @@ public class ItemSelectionHandler : MonoBehaviour {
                          //  { // Make sure that it exist inside the weaponlist
                                 ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i + 1)];
                                 ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i + 1)].WeaponName;
+                                ItemSlots[i].GetComponentInChildren<Text>().color = WeaponList[offSet + (i + 1)].textColor;
 
-                          //  }
+                            //  }
                         }
                         offSet++; // increase offset
                         
@@ -340,7 +375,9 @@ public class ItemSelectionHandler : MonoBehaviour {
                             //{
                                 ItemSlots[i].GetComponent<ItemPress>().currentItem = ApparelList[offSet + (i + 1)];
                                 ItemSlots[i].GetComponentInChildren<Text>().text = ApparelList[offSet + (i + 1)].WeaponName;
-                           /// }
+                                ItemSlots[i].GetComponentInChildren<Text>().color = ApparelList[offSet + (i + 1)].textColor;
+
+                            /// }
                         }
                         offSet++; // increase offset
 
@@ -366,7 +403,9 @@ public class ItemSelectionHandler : MonoBehaviour {
                            // {
                                 ItemSlots[i].GetComponent<ItemPress>().currentItem = WeaponList[offSet + (i + 1)];
                                 ItemSlots[i].GetComponentInChildren<Text>().text = WeaponList[offSet + (i + 1)].WeaponName;
-                           // }
+                                ItemSlots[i].GetComponentInChildren<Text>().color = WeaponList[offSet + (i + 1)].textColor;
+
+                            // }
                         }
                         offSet++; // increase offset
 
@@ -450,6 +489,18 @@ public class ItemSelectionHandler : MonoBehaviour {
         
         Weapons SelectedEquipment = ActiveEquipment.GetComponent<ItemPress>().currentItem;
         Weapons EquippedEquipment = EMScript.ActiveEquipped.GetComponent<ItemPress>().currentItem;
+
+        if (isShown == true)
+        { // There is currently an item on display
+            for (int i = 0; i < ItemSlots.Length; ++i)
+            { // turn off any tthat is activated
+                ItemSlots[i].transform.parent.gameObject.GetComponent<Image>().enabled = false;
+                ItemSlots[i].GetComponentInChildren<TextMeshProUGUI>().text = "";
+
+            }
+
+            isShown = false;
+        }
 
 
         if (EMScript.EquipItems(EMScript.ActiveEquipped, ActiveEquipment) == true)

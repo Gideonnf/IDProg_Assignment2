@@ -33,7 +33,7 @@ public class GoToNewScene : MonoBehaviour {
             // we using
             if (sceneName != "")
                 GoToNewScene_STRING(sceneName);
-            else if (sceneIndex == -1)
+            else if (sceneIndex != -1)
                 GoToNewScene_INT(sceneIndex);
             // stop timer
             startTimer = false;
@@ -71,4 +71,17 @@ public class GoToNewScene : MonoBehaviour {
         timer = _timer;
         startTimer = true;
     }
+
+    public void GoToNewScene_INT_Timer(int _sceneIndex, float _timer)
+    {
+        // Check if a timer is already running
+        if (startTimer)
+            return;
+
+        // Assign the Data
+        sceneIndex = _sceneIndex;
+        timer = _timer;
+        startTimer = true;
+    }
+
 }

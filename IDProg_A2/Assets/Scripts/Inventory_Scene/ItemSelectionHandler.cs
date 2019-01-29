@@ -67,6 +67,8 @@ public class ItemSelectionHandler : MonoBehaviour {
     public GameObject[] ItemSlots = new GameObject[5];
     public GameObject EquipmentManager;
     public GameObject EquipButton;
+    public GameObject ItemSelectionBox;
+    private RectTransform ItemSelectionTransform;
     private Equipment_Manager EMScript;
 
     [System.NonSerialized]
@@ -122,6 +124,7 @@ public class ItemSelectionHandler : MonoBehaviour {
             // idk why lol
         }
         EMScript = EquipmentManager.GetComponent<Equipment_Manager>();
+        ItemSelectionTransform = ItemSelectionBox.GetComponent<RectTransform>();
         isShown = false;
     }
 
@@ -133,15 +136,20 @@ public class ItemSelectionHandler : MonoBehaviour {
             InventoryManager.isChanged = false;
         }
 
-        if (Input.GetKeyUp("3"))
+        if (Swipe.GetInstance().GetSwipeUp())
         {
-            ShiftDown();
+            if (RectTransformUtility.RectangleContainsScreenPoint(ItemSelectionTransform, Swipe.GetInstance().GetLastTouchedPosition()))
+            {
+                ShiftUp();
+            }
         }
-        if (Input.GetKeyUp("4"))
+        else if (Swipe.GetInstance().GetSwipeDown())
         {
-            ShiftUp();
+            if (RectTransformUtility.RectangleContainsScreenPoint(ItemSelectionTransform, Swipe.GetInstance().GetLastTouchedPosition()))
+            {
+                ShiftDown();
+            }
         }
-
         if (EMScript.isShown && isShown)
         { // If both are showiing
             EquipButton.SetActive(true);

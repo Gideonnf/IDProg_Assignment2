@@ -45,9 +45,11 @@ public class Equipment_Manager : MonoBehaviour {
         for (int i = 0; i < EquipmentSlots.Length; ++i)
         {
             EquipmentSlots[i].GetComponent<ItemPress>().currentItem = playerTemp.Slots[i];
+            EquipmentSlots[i].GetComponentInChildren<Text>().text = "Empty";
+
         }
 
-        
+
         //EquipmentSlots[0].GetComponentInChildren<ItemPress>().currentItem = playerTemp.Head;
         //EquipmentSlots[1].GetComponentInChildren<ItemPress>().currentItem = playerTemp.Chest;
         //EquipmentSlots[2].GetComponentInChildren<ItemPress>().currentItem = playerTemp.Weapon;
@@ -61,7 +63,8 @@ public class Equipment_Manager : MonoBehaviour {
         for (int i = 0; i < EquipmentSlots.Length; ++i)
         {
             //switch()
-            EquipmentSlots[i].GetComponentInChildren<Text>().text = EquipmentSlots[i].GetComponent<ItemPress>().currentItem.WeaponName;
+            if(EquipmentSlots[i].GetComponent<ItemPress>().currentItem.WeaponName != "")
+                EquipmentSlots[i].GetComponentInChildren<Text>().text = EquipmentSlots[i].GetComponent<ItemPress>().currentItem.WeaponName;
         }
     }
 

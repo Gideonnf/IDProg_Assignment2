@@ -14,7 +14,8 @@ public class Inventory_Manager : MonoBehaviour {
     }
     public EquiptmentTypes[] InventorySlots = new EquiptmentTypes[(int)EquiptmentTypes.TotalTypes];
     public GameObject[] Containers = new GameObject[(int)EquiptmentTypes.TotalTypes];
-
+    public GameObject EquipmentSelectionBox;
+    private RectTransform EquipmentBoxTransform;
     
 
     [System.NonSerialized]
@@ -28,17 +29,24 @@ public class Inventory_Manager : MonoBehaviour {
     void Start () {
         ActiveEquiptmentType = EquiptmentTypes.Weapons;
         isChanged = true;
+        EquipmentBoxTransform = EquipmentSelectionBox.GetComponent<RectTransform>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyUp("1"))
+		if(Swipe.GetInstance().GetSwipeUp())
         {
-            ShiftUp();
+            if (RectTransformUtility.RectangleContainsScreenPoint(EquipmentBoxTransform, Swipe.GetInstance().GetLastTouchedPosition()))
+            {
+                ShiftUp();
+            }
         }
-        else if (Input.GetKeyUp("2"))
+        else if (Swipe.GetInstance().GetSwipeDown())
         {
-            ShiftDown();
+            if (RectTransformUtility.RectangleContainsScreenPoint(EquipmentBoxTransform, Swipe.GetInstance().GetLastTouchedPosition()))
+            {
+                ShiftDown();
+            }
         }
 	}
 

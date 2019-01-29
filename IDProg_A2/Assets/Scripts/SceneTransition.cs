@@ -20,6 +20,7 @@ public class SceneTransition : MonoBehaviour {
     public Scenes currentScene;
     public GameObject LeftScene;
     public GameObject RightScene;
+    public GameObject GameScene;    
 	// Use this for initialization
 	void Start () {
 		
@@ -56,7 +57,13 @@ public class SceneTransition : MonoBehaviour {
             {
                 GetComponent<GoToNewScene>().GoToNewScene_INT_Timer((int)currentScene + 1, 0.4f);
             }
+        }
+        else if (Swipe.GetInstance().GetSwipeUp())
+        {
+            GameScene.gameObject.SetActive(true);
+            GameScene.GetComponent<RectTransform>().DOAnchorPosY(0, 0.4f, true);
 
+            GetComponent<GoToNewScene>().GoToNewScene_INT_Timer((int)Scenes.Game_Scene, 0.4f);
         }
     }
 }

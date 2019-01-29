@@ -25,6 +25,23 @@ public class Minus_Stats : MonoBehaviour {
        // StatModifier = 0;
     }
 
+    private void Update()
+    {
+        if (AttributeManager.Modifier[(int)Stat] <= 0)
+        { // No modifier in that stat so button is greyed out
+            transform.GetComponent<Button>().enabled = false;
+            Color color = transform.GetComponent<Image>().color;
+            color.a = 0.5f;
+            transform.GetComponent<Image>().color = color;
+        }
+        else
+        { // The stats are modified
+            transform.GetComponent<Button>().enabled = true;
+            Color color = transform.GetComponent<Image>().color;
+            color.a = 1.0f;
+            transform.GetComponent<Image>().color = color;
+        }
+    }
 
     public void DecreaseStats()
     {

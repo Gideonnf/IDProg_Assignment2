@@ -314,7 +314,7 @@ public class SkillTab : MonoBehaviour {
                 {
                     if (CurrentButton.GetComponent<ButtonHandlerOrigin>().GetActive())
                     {
-                        SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(5);
+                        SkillPointNumber.GetComponent<AvalibleSkillPoints>().SetAvalibleSkillPoints(7);
                         CurrentButton.GetComponent<ButtonHandlerOrigin>().ToggleActive();
                     }
                     else

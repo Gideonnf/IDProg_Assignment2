@@ -6748,6 +6748,9 @@ MonoBehaviour:
   LeftScene: {fileID: 1230355986}
   RightScene: {fileID: 1599929891}
   GameScene: {fileID: 1003656204}
+  InventoryRectObjects:
+  - {fileID: 183859456}
+  - {fileID: 333535228}
 --- !u!114 &562519550
 MonoBehaviour:
   m_ObjectHideFlags: 0
